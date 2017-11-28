@@ -9,8 +9,6 @@
     tools:context="com.tasarim.tasarim.Giris">
 
 
-
-
         <EditText
             android:id="@+id/editText3"
             android:layout_width="match_parent"

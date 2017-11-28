@@ -17,8 +17,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="100dp"
-        android:background="#80FFFFFF"
+        android:backgroundTint="#80FFFFFF"
         android:ems="10"
+        android:background="@drawable/background"
         android:fontFamily="serif"
         android:hint="  İsim"
         android:inputType="textPersonName"
@@ -28,16 +29,18 @@
         android:textColorHint="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+
         android:typeface="sans" />
 
     <EditText
+        android:background="@drawable/background"
         android:id="@+id/soyisim"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"
-        android:background="#80FFFFFF"
+        android:backgroundTint="#80FFFFFF"
         android:ems="10"
         android:fontFamily="serif"
         android:hint="  Soyisim"
@@ -50,13 +53,14 @@
         android:typeface="sans" />
 
     <EditText
+        android:background="@drawable/background"
         android:id="@+id/kullaniciAdi"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"
-        android:background="#80FFFFFF"
+        android:backgroundTint="#80FFFFFF"
         android:ems="10"
         android:fontFamily="serif"
         android:hint="  Kullanıcı Adı"
@@ -69,13 +73,14 @@
         android:typeface="sans" />
 
     <EditText
+        android:background="@drawable/background"
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"
-        android:background="#80FFFFFF"
+        android:backgroundTint="#80FFFFFF"
         android:ems="10"
         android:fontFamily="serif"
         android:hint="  Şifre"
@@ -99,6 +104,8 @@
             android:layout_marginLeft="240dp"
             android:fontFamily="serif"
             android:text="Kayıt Ol"
+            android:backgroundTint="#80FFFFFF"
+            android:background="@drawable/background"
             android:textStyle="bold" />
 
 

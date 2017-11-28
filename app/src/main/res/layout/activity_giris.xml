@@ -36,7 +36,7 @@
             android:background="@drawable/background"
             android:backgroundTint="#80ffffff"
             android:focusable="true"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColorHint="@color/colorPrimaryDark"
             android:hint="Şifre..."/>
 
@@ -75,7 +75,7 @@
                 android:textStyle="bold"
                 android:text="Üye Ol"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-
+                android:textSize="16dp"
                 android:textColor="@color/colorAccent" />
 
 

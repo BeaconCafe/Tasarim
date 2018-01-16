@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KayitOl"></activity>
+        <activity android:name=".KayitOl" />
+        <activity android:name=".MusteriSayfasi"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "190263372275",
+    "firebase_url": "https://tasarim-edb42.firebaseio.com",
+    "project_id": "tasarim-edb42",
+    "storage_bucket": "tasarim-edb42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190263372275:android:9eaa73ce916ccf45",
+        "android_client_info": {
+          "package_name": "com.tasarim.tasarim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190263372275-e10vecrmco1qpc0h03d7rgovh6t9lqvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tasarim.tasarim",
+            "certificate_hash": "3dfad329ab0ff90c42d394d841cc78f8307a4655"
+          }
+        },
+        {
+          "client_id": "190263372275-kgkm0l9fi0kh9n7p0k4nkgodajnjgffd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZwFCHeSdDiFYVYC2JAnvlbOHUOIFc0Nk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190263372275-kgkm0l9fi0kh9n7p0k4nkgodajnjgffd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

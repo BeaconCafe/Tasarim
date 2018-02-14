@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 
-
+import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
 import com.estimote.coresdk.recognition.packets.Beacon;
 import com.estimote.coresdk.service.BeaconManager;
@@ -138,5 +138,12 @@ public class MusteriSayfasi extends AppCompatActivity {
                 beaconManager.startMonitoring(new BeaconRegion("monitored region", UUID.fromString("f3d1d52b-6eb0-fdaf-b51c-1ade24648c14"),1,9));
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SystemRequirementsChecker.checkWithDefaultDialogs(this);
     }
 }

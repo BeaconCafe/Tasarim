@@ -39,6 +39,8 @@ public class MusteriSayfasi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musteri_sayfasi);
 
+
+
         db=FirebaseDatabase.getInstance();
         dbRef=FirebaseDatabase.getInstance().getReference();
 
@@ -51,7 +53,7 @@ public class MusteriSayfasi extends AppCompatActivity {
 
        beaconBagla();
 
-       girisSayisiArttır(eposta);
+
 
 
     }
@@ -128,6 +130,7 @@ public class MusteriSayfasi extends AppCompatActivity {
             @Override
             public void onEnteredRegion(BeaconRegion region, List<Beacon> list) {
                 bildirimAt("hoşgeldiniz","merhaba");
+                girisSayisiArttır(eposta);
 
             }
 

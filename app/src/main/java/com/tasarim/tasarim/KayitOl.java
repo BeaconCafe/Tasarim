@@ -1,11 +1,13 @@
 package com.tasarim.tasarim;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -67,6 +69,15 @@ public class KayitOl extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    public void klavyekapat(View v) {
+        InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mgr.hideSoftInputFromWindow(edt_mail.getWindowToken(), 0);
+        mgr.hideSoftInputFromWindow(edt_ad.getWindowToken(), 0);
+        mgr.hideSoftInputFromWindow(edt_soyad.getWindowToken(), 0);
+        mgr.hideSoftInputFromWindow(edt_sifre.getWindowToken(), 0);
     }
 
     public void create(String email, String sifre){

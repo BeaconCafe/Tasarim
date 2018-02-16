@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:onClick="klavyekapat"
     tools:context="com.tasarim.tasarim.KayitOl"
     android:background="@drawable/kayitsayfasi"
     android:gravity="center"

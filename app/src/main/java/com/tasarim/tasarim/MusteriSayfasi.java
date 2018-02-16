@@ -31,6 +31,8 @@ public class MusteriSayfasi extends AppCompatActivity {
     String eposta;
     BeaconManager beaconManager;
     String gelenEposta;
+    DatabaseReference dbRef;
+    int db_girisSayisi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +40,18 @@ public class MusteriSayfasi extends AppCompatActivity {
         setContentView(R.layout.activity_musteri_sayfasi);
 
         db=FirebaseDatabase.getInstance();
+        dbRef=FirebaseDatabase.getInstance().getReference();
 
         tv_hosgeldiniz=(TextView) findViewById(R.id.hosgeldiniz);
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
 
         eposta= getIntent().getExtras().getString("email");
+
         isimGetir();
 
-        girisSayisiAl();
+       beaconBagla();
 
-
-
+       girisSayisiArttır(eposta);
 
 
     }
@@ -56,8 +59,11 @@ public class MusteriSayfasi extends AppCompatActivity {
 
     public void isimGetir(){
 
+
         DatabaseReference dbIsimler=db.getReference("Müşteri");
-        dbIsimler.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+        dbIsimler.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot isimler:dataSnapshot.getChildren()){
@@ -114,7 +120,7 @@ public class MusteriSayfasi extends AppCompatActivity {
 
     }
 
-    public void girisSayisiAl(){
+    public void beaconBagla(){
 
         beaconManager=new BeaconManager(getApplicationContext());
 
@@ -140,10 +146,51 @@ public class MusteriSayfasi extends AppCompatActivity {
         });
     }
 
+    public void girisSayisiArttır(final String eposta){
+
+
+        DatabaseReference dbIsimler=db.getReference("Müşteri");
+        dbIsimler.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot kisiler:dataSnapshot.getChildren()){
+
+                    gelenEposta=kisiler.getValue(Musteri.class).getEposta();
+
+                    if(gelenEposta.equals(eposta)){
+
+                        db_girisSayisi=kisiler.getValue(Musteri.class).getGirisSayisi();
+                        db_girisSayisi++;
+                        dbRef.child("Müşteri").child(kisiler.getKey().toString()).child("girisSayisi").setValue(db_girisSayisi);
+                        tv_girisSayisi.setText("Giriş sayınız: "+kisiler.getValue(Musteri.class).getGirisSayisi());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        isimGetir();
+
+
+
+
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
     }
+
+
+
+
 }

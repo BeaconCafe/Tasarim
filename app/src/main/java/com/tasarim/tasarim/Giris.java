@@ -78,6 +78,8 @@ public class Giris extends AppCompatActivity {
 
     }
 
+
+
     public void klavyekapat(View v) {
         InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mgr.hideSoftInputFromWindow(kullaniciAdi.getWindowToken(), 0);

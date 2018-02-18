@@ -79,6 +79,18 @@ public class KayitOl extends AppCompatActivity {
         });
     }
 
+    public void showSoftKeyboard(View view) {
+        if (edt_ad.requestFocus()| edt_soyad.requestFocus()| edt_sifre.requestFocus()|edt_mail.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            imm.showSoftInput(edt_ad, InputMethodManager.SHOW_IMPLICIT);
+            imm.showSoftInput(edt_soyad,InputMethodManager.SHOW_IMPLICIT);
+            imm.showSoftInput(edt_mail,InputMethodManager.SHOW_IMPLICIT);
+            imm.showSoftInput(edt_sifre,InputMethodManager.SHOW_IMPLICIT);
+            //  imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
+    }
+
 
     public void klavyekapat(View v) {
         InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

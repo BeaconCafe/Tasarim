@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:onClick="klavyekapat"
+    android:onClick="showSoftKeyboard"
+    android:isScrollContainer="true"
+    android:descendantFocusability="beforeDescendants"
     tools:context="com.tasarim.tasarim.KayitOl"
     android:background="@drawable/kayitsayfasi"
     android:gravity="center"
     >
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/center_layout"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="40dp"
+
+
+            android:layout_width="fill_parent"
+            android:layout_height="500dp">
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:onClick="showSoftKeyboard"
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
     <EditText
         android:background="@drawable/background"
@@ -19,6 +40,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="25dp"
+        android:onClick="showSoftKeyboard"
         android:backgroundTint="#80FFFFFF"
         android:ems="10"
         android:fontFamily="serif"
@@ -38,6 +60,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
 
+        android:onClick="showSoftKeyboard"
         android:backgroundTint="#80FFFFFF"
         android:ems="10"
         android:background="@drawable/background"
@@ -60,6 +83,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="25dp"
+
+        android:onClick="showSoftKeyboard"
         android:backgroundTint="#80FFFFFF"
         android:ems="10"
         android:fontFamily="serif"
@@ -86,17 +111,15 @@
         android:ems="10"
         android:fontFamily="serif"
         android:hint="  Şifre"
+
+        android:onClick="showSoftKeyboard"
         android:inputType="textPassword"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
         android:typeface="sans" />
-    <LinearLayout
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
 
         <Button
             android:id="@+id/kayitOl"
@@ -104,6 +127,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="serif"
             android:text="Kayıt Ol"
             android:backgroundTint="@color/yesil"
@@ -126,4 +150,6 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -5,8 +5,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -27,12 +31,15 @@ import java.util.UUID;
 public class MusteriSayfasi extends AppCompatActivity {
 
     TextView tv_hosgeldiniz, tv_girisSayisi;
+    Button cikis;
     FirebaseDatabase db;
     String eposta;
     BeaconManager beaconManager;
     String gelenEposta;
     DatabaseReference dbRef;
     int db_girisSayisi;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +47,35 @@ public class MusteriSayfasi extends AppCompatActivity {
         setContentView(R.layout.activity_musteri_sayfasi);
 
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());//preferences nesnesi oluşturuluyor ve prefernces referansına bağlanıyor
+        editor = preferences.edit();
 
         db=FirebaseDatabase.getInstance();
         dbRef=FirebaseDatabase.getInstance().getReference();
 
         tv_hosgeldiniz=(TextView) findViewById(R.id.hosgeldiniz);
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
+        cikis=(Button)findViewById(R.id.button2);
 
-        eposta= getIntent().getExtras().getString("email");
+        //eposta= getIntent().getExtras().getString("email");
+
+        eposta=preferences.getString("eposta","");
 
         isimGetir();
+        beaconBagla();
 
-       beaconBagla();
 
+        cikis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            editor.putBoolean("login",false);
+            editor.commit();
+            Intent i=new Intent(getApplicationContext(),Giris.class);
+            startActivity(i);
+            finish();
 
+            }
+        });
 
 
     }

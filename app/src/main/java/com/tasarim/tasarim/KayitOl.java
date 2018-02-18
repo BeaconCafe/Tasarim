@@ -2,6 +2,8 @@ package com.tasarim.tasarim;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,9 +24,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class KayitOl extends AppCompatActivity {
 
     EditText edt_mail, edt_sifre,edt_ad,edt_soyad;
-
     Button btn_kayitOl, btn_giris;
     FirebaseAuth mAuth;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,10 @@ public class KayitOl extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
 
 
+        preferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor=preferences.edit();
+
+
         btn_kayitOl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +61,7 @@ public class KayitOl extends AppCompatActivity {
                 else
                 {
                     create(edt_mail.getText().toString(),edt_sifre.getText().toString());
+
 
                 }
 
@@ -92,6 +100,8 @@ public class KayitOl extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(KayitOl.this, "Kayıt Başarılı", Toast.LENGTH_SHORT).show();
                     musteriEkle(edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0);
+                    editor.putBoolean("login",true);
+                    editor.commit();
                 }
                 else
                 {
@@ -112,4 +122,6 @@ public class KayitOl extends AppCompatActivity {
         String uid=dbRef.push().getKey();
         dbRef.child(uid).setValue(musteri);
     }
+
+ 
 }

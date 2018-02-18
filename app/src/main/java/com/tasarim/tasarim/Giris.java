@@ -2,6 +2,8 @@ package com.tasarim.tasarim;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +27,9 @@ public class Giris extends AppCompatActivity {
     EditText kullaniciAdi,sifre;
     FirebaseAuth mAuth;
 
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,15 @@ public class Giris extends AppCompatActivity {
         giris=(Button)findViewById(R.id.giris);
         kullaniciAdi=(EditText)findViewById(R.id.kullaniciAdi);
         sifre=(EditText)findViewById(R.id.sifre);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());//preferences objesi
+        editor = preferences.edit();
+
+        if(preferences.getBoolean("login", false)){
+            Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
+            startActivity(i);
+            finish();
+        }
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -70,15 +84,21 @@ public class Giris extends AppCompatActivity {
         mgr.hideSoftInputFromWindow(sifre.getWindowToken(), 0);
     }
 
-    public void login(String email, String password){
+    public void login(final String email, String password){
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Giris.this, "Giriş Başarılı", Toast.LENGTH_SHORT).show();
+
+                    editor.putBoolean("login",true);
+                    editor.putString("eposta",email);
+                    editor.commit();
+
                     Intent intent=new Intent(Giris.this,MusteriSayfasi.class);
                     intent.putExtra("email",kullaniciAdi.getText().toString());
                     startActivity(intent);
+                    finish();
                 }
                 else{
                     Toast.makeText(Giris.this, "Giriş Başarısız", Toast.LENGTH_SHORT).show();

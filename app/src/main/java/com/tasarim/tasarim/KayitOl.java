@@ -123,5 +123,5 @@ public class KayitOl extends AppCompatActivity {
         dbRef.child(uid).setValue(musteri);
     }
 
- 
+
 }

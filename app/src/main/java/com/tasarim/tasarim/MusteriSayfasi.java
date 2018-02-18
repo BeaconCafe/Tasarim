@@ -1,5 +1,6 @@
 package com.tasarim.tasarim;
 
+import android.app.ActionBar;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,6 +10,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +23,8 @@ import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
 import com.estimote.coresdk.recognition.packets.Beacon;
 import com.estimote.coresdk.service.BeaconManager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,8 +37,8 @@ import java.util.UUID;
 public class MusteriSayfasi extends AppCompatActivity {
 
     TextView tv_hosgeldiniz, tv_girisSayisi;
-    Button cikis;
     FirebaseDatabase db;
+    FirebaseAuth mAuth;
     String eposta;
     BeaconManager beaconManager;
     String gelenEposta;
@@ -52,30 +58,21 @@ public class MusteriSayfasi extends AppCompatActivity {
 
         db=FirebaseDatabase.getInstance();
         dbRef=FirebaseDatabase.getInstance().getReference();
+        mAuth=FirebaseAuth.getInstance();
+
+
 
         tv_hosgeldiniz=(TextView) findViewById(R.id.hosgeldiniz);
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
-        cikis=(Button)findViewById(R.id.button2);
 
-        //eposta= getIntent().getExtras().getString("email");
+
+
 
         eposta=preferences.getString("eposta","");
 
         isimGetir();
         beaconBagla();
-
-
-        cikis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            editor.putBoolean("login",false);
-            editor.commit();
-            Intent i=new Intent(getApplicationContext(),Giris.class);
-            startActivity(i);
-            finish();
-
-            }
-        });
+        
 
 
     }
@@ -215,7 +212,26 @@ public class MusteriSayfasi extends AppCompatActivity {
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_exit:
+                editor.putBoolean("login",false);
+                editor.commit();
+                mAuth.signOut();
+                Intent i=new Intent(getApplicationContext(),Giris.class);
+                startActivity(i);
+                finish();
+            default:
+                return super.onOptionsItemSelected(item);
 
-
+        }
+    }
 }

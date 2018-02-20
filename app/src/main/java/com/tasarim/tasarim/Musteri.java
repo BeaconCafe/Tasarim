@@ -5,7 +5,7 @@ package com.tasarim.tasarim;
  */
 
 public class Musteri {
-    private String eposta, ad, soyad;
+    private String eposta, ad, soyad,admin;
     private int girisSayisi;
 
     public Musteri(){
@@ -13,13 +13,13 @@ public class Musteri {
     }
 
 
-    public Musteri(String eposta, String ad, String soyad, int girisSayisi){
+    public Musteri(String eposta, String ad, String soyad,String admin, int girisSayisi){
 
         this.eposta=eposta;
         this.ad=ad;
         this.soyad=soyad;
         this.girisSayisi=girisSayisi;
-
+        this.admin="1";
 
     }
 
@@ -55,5 +55,13 @@ public class Musteri {
 
     public void setGirisSayisi(int girisSayisi) {
         this.girisSayisi = girisSayisi;
+    }
+
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 }

@@ -83,7 +83,6 @@ public class MusteriSayfasi extends AppCompatActivity {
 
         DatabaseReference dbIsimler=db.getReference("Müşteri");
 
-
         dbIsimler.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -95,7 +94,10 @@ public class MusteriSayfasi extends AppCompatActivity {
                        tv_hosgeldiniz.setText("Hoşgeldiniz, " +isimler.getValue(Musteri.class).getAd()+" "+isimler.getValue(Musteri.class).getSoyad());
                        tv_girisSayisi.setText("Giriş sayınız: "+isimler.getValue(Musteri.class).getGirisSayisi());
 
+                       if(isimler.getValue(Musteri.class).getAdmin() =="1")
+                       {
 
+                       }
                     }
                 }
             }

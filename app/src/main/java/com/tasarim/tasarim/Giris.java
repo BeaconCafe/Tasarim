@@ -19,6 +19,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Giris extends AppCompatActivity {
 
@@ -97,10 +102,37 @@ public class Giris extends AppCompatActivity {
                     editor.putString("eposta",email);
                     editor.commit();
 
-                    Intent intent=new Intent(Giris.this,MusteriSayfasi.class);
-                    intent.putExtra("email",kullaniciAdi.getText().toString());
-                    startActivity(intent);
-                    finish();
+                    DatabaseReference dbIsimler= FirebaseDatabase.getInstance().getReference().child("Müşteri").child(mAuth.getCurrentUser().getUid());
+
+                    dbIsimler.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            String admin=dataSnapshot.child("admin").getValue().toString();
+
+                            if(admin.equals("1"))
+                            {
+                                Intent intent = new Intent(Giris.this, AdminSayfasi.class);
+                                intent.putExtra("email", kullaniciAdi.getText().toString());
+                                startActivity(intent);
+                                finish();
+                            }
+                            else {
+                                Intent intent = new Intent(Giris.this, MusteriSayfasi.class);
+                                intent.putExtra("email", kullaniciAdi.getText().toString());
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
                 }
                 else{
                     Toast.makeText(Giris.this, "Giriş Başarısız", Toast.LENGTH_SHORT).show();

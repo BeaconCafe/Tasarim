@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -111,7 +112,12 @@ public class KayitOl extends AppCompatActivity {
                 }
                 if(task.isSuccessful()){
                     Toast.makeText(KayitOl.this, "Kayıt Başarılı", Toast.LENGTH_SHORT).show();
-                    musteriEkle(edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0);
+
+                    FirebaseUser currentMusteri=FirebaseAuth.getInstance().getCurrentUser();
+                    String id=currentMusteri.getUid();
+
+
+                    musteriEkle(id,edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0);
                     editor.putBoolean("login",true);
                     editor.commit();
                 }
@@ -123,7 +129,7 @@ public class KayitOl extends AppCompatActivity {
         });
     }
 
-    public void musteriEkle(String eposta,String isim,String soyisim,int girisSayisi) {
+    public void musteriEkle(String id,String eposta,String isim,String soyisim,int girisSayisi) {
         Musteri musteri = new Musteri();
         musteri.setAd(isim);
         musteri.setSoyad(soyisim);
@@ -131,8 +137,8 @@ public class KayitOl extends AppCompatActivity {
         musteri.setGirisSayisi(girisSayisi);
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Müşteri");
-        String uid=dbRef.push().getKey();
-        dbRef.child(uid).setValue(musteri);
+       // String uid=dbRef.push().getKey();
+        dbRef.child(id).setValue(musteri);
     }
 
 

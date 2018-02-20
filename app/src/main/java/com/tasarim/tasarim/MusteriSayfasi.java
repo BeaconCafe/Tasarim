@@ -92,7 +92,7 @@ public class MusteriSayfasi extends AppCompatActivity {
 
                    if(gelenEposta.equals(eposta)){
                        tv_hosgeldiniz.setText("Hoşgeldiniz, " +isimler.getValue(Musteri.class).getAd()+" "+isimler.getValue(Musteri.class).getSoyad());
-                       tv_girisSayisi.setText("Giriş sayınız: "+isimler.getValue(Musteri.class).getGirisSayisi());
+                       tv_girisSayisi.setText(isimler.getValue(Musteri.class).getGirisSayisi());
 
                        if(isimler.getValue(Musteri.class).getAdmin() =="1")
                        {

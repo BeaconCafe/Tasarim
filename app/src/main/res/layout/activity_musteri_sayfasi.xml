@@ -14,21 +14,45 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="160dp"
 
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
-        android:textStyle="italic" />
+        android:text="aaa"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:id="@+id/girisSayisi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="40dp"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="18sp"
-        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bu güne kadar "
+            android:textSize="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <TextView
+            android:id="@+id/girisSayisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="a"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" kez geldiniz. "
+            android:textSize="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

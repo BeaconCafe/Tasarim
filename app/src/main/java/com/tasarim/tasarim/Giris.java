@@ -50,11 +50,11 @@ public class Giris extends AppCompatActivity {
        editor = preferences.edit();
 
        //bundan dolayı adminken müşteri girişi oluyor o yüzden kapattım
-        /*if(preferences.getBoolean("login", false)){
-            Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
-            startActivity(i);
-            finish();
-        }*/
+//        if(preferences.getBoolean("login", false)){
+//            Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
+//            startActivity(i);
+//            finish();
+//        }
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -118,10 +118,16 @@ public class Giris extends AppCompatActivity {
                                 finish();
                             }
                             else {
-                                Intent intent = new Intent(Giris.this, MusteriSayfasi.class);
-                                intent.putExtra("email", "fnur@mail.com");
-                                startActivity(intent);
-                                finish();
+
+                                if(preferences.getBoolean("login", false)){
+                                    Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+//                                Intent intent = new Intent(Giris.this, MusteriSayfasi.class);
+//                                intent.putExtra("email", "fnur@mail.com");
+//                                startActivity(intent);
+//                                finish();
                             }
                         }
 

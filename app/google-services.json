@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "190263372275-e10vecrmco1qpc0h03d7rgovh6t9lqvg.apps.googleusercontent.com",
+          "client_id": "190263372275-9djvdvvgm6d52g57mcho4delfpe83m4g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.tasarim.tasarim",
-            "certificate_hash": "3dfad329ab0ff90c42d394d841cc78f8307a4655"
+            "certificate_hash": "b71815dce885209bb6f72499573560b96da7fc99"
           }
         },
         {

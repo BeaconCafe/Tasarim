@@ -225,7 +225,7 @@ public class MusteriSayfasi extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_exit:
-                editor.putBoolean("login",false);
+               editor.putBoolean("login",false);
                 editor.commit();
                 mAuth.signOut();
                 Intent i=new Intent(getApplicationContext(),Giris.class);

@@ -37,7 +37,10 @@
             android:name=".KayitOl"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".MusteriSayfasi" />
-        <activity android:name=".AdminSayfasi"></activity>
+        <activity android:name=".AdminSayfasi" />
+        <activity android:name=".AdminMenu"></activity>
+        <activity android:name=".ImagesActivity"></activity>
+
     </application>
 
 </manifest>

@@ -47,13 +47,14 @@ public class Giris extends AppCompatActivity {
         sifre=(EditText)findViewById(R.id.sifre);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());//preferences objesi
-        editor = preferences.edit();
+       editor = preferences.edit();
 
-        if(preferences.getBoolean("login", false)){
+       //bundan dolayı adminken müşteri girişi oluyor o yüzden kapattım
+        /*if(preferences.getBoolean("login", false)){
             Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
             startActivity(i);
             finish();
-        }
+        }*/
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -98,7 +99,7 @@ public class Giris extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(Giris.this, "Giriş Başarılı", Toast.LENGTH_SHORT).show();
 
-                    editor.putBoolean("login",true);
+                   editor.putBoolean("login",true);
                     editor.putString("eposta",email);
                     editor.commit();
 
@@ -113,13 +114,12 @@ public class Giris extends AppCompatActivity {
                             if(admin.equals("1"))
                             {
                                 Intent intent = new Intent(Giris.this, AdminSayfasi.class);
-                                intent.putExtra("email", kullaniciAdi.getText().toString());
                                 startActivity(intent);
                                 finish();
                             }
                             else {
                                 Intent intent = new Intent(Giris.this, MusteriSayfasi.class);
-                                intent.putExtra("email", kullaniciAdi.getText().toString());
+                                intent.putExtra("email", "fnur@mail.com");
                                 startActivity(intent);
                                 finish();
                             }

@@ -135,6 +135,7 @@ public class KayitOl extends AppCompatActivity {
         musteri.setSoyad(soyisim);
         musteri.setEposta(eposta);
         musteri.setGirisSayisi(girisSayisi);
+        musteri.setAdmin("0");
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Müşteri");
        // String uid=dbRef.push().getKey();

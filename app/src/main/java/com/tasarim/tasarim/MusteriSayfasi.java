@@ -53,8 +53,11 @@ public class MusteriSayfasi extends AppCompatActivity {
         setContentView(R.layout.activity_musteri_sayfasi);
 
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());//preferences nesnesi oluşturuluyor ve prefernces referansına bağlanıyor
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = preferences.edit();
+
+        editor.putString("rol","müşteri");
+        editor.commit();
 
         db=FirebaseDatabase.getInstance();
         dbRef=FirebaseDatabase.getInstance().getReference();
@@ -92,7 +95,7 @@ public class MusteriSayfasi extends AppCompatActivity {
 
                    if(gelenEposta.equals(eposta)){
                        tv_hosgeldiniz.setText("Hoşgeldiniz, " +isimler.getValue(Musteri.class).getAd()+" "+isimler.getValue(Musteri.class).getSoyad());
-                       tv_girisSayisi.setText(isimler.getValue(Musteri.class).getGirisSayisi());
+                       tv_girisSayisi.setText(Integer.toString(isimler.getValue(Musteri.class).getGirisSayisi()));
 
                        if(isimler.getValue(Musteri.class).getAdmin() =="1")
                        {

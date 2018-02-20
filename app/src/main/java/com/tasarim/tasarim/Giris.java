@@ -49,12 +49,23 @@ public class Giris extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());//preferences objesi
        editor = preferences.edit();
 
-       //bundan dolayı adminken müşteri girişi oluyor o yüzden kapattım
-//        if(preferences.getBoolean("login", false)){
-//            Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
-//            startActivity(i);
-//            finish();
-//        }
+     
+
+        if(preferences.getBoolean("login", false)){
+
+            String rol=preferences.getString("rol","");
+            if(rol.equals("müşteri")){
+                Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
+                startActivity(i);
+                finish();
+            }
+            else if(rol.equals("admin")){
+                Intent i = new Intent(getApplicationContext(),AdminSayfasi.class);
+                startActivity(i);
+                finish();
+            }
+
+        }
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -113,21 +124,21 @@ public class Giris extends AppCompatActivity {
 
                             if(admin.equals("1"))
                             {
-                                Intent intent = new Intent(Giris.this, AdminSayfasi.class);
-                                startActivity(intent);
-                                finish();
+                                editor.putBoolean("login", true);
+                                    Intent intent = new Intent(Giris.this, AdminSayfasi.class);
+                                    startActivity(intent);
+                                    finish();
+
+
                             }
                             else {
 
-                                if(preferences.getBoolean("login", false)){
+                                editor.putBoolean("login", true);
                                     Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
                                     startActivity(i);
                                     finish();
-                                }
-//                                Intent intent = new Intent(Giris.this, MusteriSayfasi.class);
-//                                intent.putExtra("email", "fnur@mail.com");
-//                                startActivity(intent);
-//                                finish();
+
+
                             }
                         }
 

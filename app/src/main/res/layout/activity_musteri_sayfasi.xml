@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.tasarim.tasarim.MusteriSayfasi">
 
@@ -12,9 +13,8 @@
         android:id="@+id/hosgeldiniz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="160dp"
+        android:layout_marginLeft="240dp"
 
-        android:text="aaa"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
@@ -36,8 +36,6 @@
             android:id="@+id/girisSayisi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="a"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="18sp"
             android:textStyle="italic" />
@@ -52,6 +50,44 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/tv"
+            android:layout_alignLeft="@+id/tv"
+            android:layout_alignStart="@+id/tv"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/hediye" />
+        <com.github.lzyzsd.circleprogress.ArcProgress
+            android:id="@+id/pb"
+            android:layout_marginLeft="30dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            custom:arc_progress="0"
+            custom:arc_suffix_text=" "
+            custom:arc_text_size="0dp"
+            android:layout_marginTop="10dp"
+            custom:arc_unfinished_color="#d7d9e0"
+            custom:arc_finished_color="@color/colorPrimaryDark"
+            />
+        <TextView
+            android:id="@+id/tv"
+            android:layout_marginLeft="55dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#676a6b"
+            android:layout_below="@id/pb"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            />
+
+    </RelativeLayout>
 
 
 

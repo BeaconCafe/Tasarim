@@ -38,6 +38,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.estimote:sdk:1.4.0'
+
+    compile 'com.github.lzyzsd:circleprogress:1.2.1'
 }
 
 

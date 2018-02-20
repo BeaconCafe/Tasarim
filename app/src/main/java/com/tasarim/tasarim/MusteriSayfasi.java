@@ -1,6 +1,5 @@
 package com.tasarim.tasarim;
 
-import android.app.ActionBar;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,8 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -23,8 +20,8 @@ import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
 import com.estimote.coresdk.recognition.packets.Beacon;
 import com.estimote.coresdk.service.BeaconManager;
 
+import com.github.lzyzsd.circleprogress.ArcProgress;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,9 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.UUID;
 
+
+
 public class MusteriSayfasi extends AppCompatActivity {
 
-    TextView tv_hosgeldiniz, tv_girisSayisi;
+    TextView tv_hosgeldiniz, tv_girisSayisi,tv;
     FirebaseDatabase db;
     FirebaseAuth mAuth;
     String eposta;
@@ -46,12 +45,14 @@ public class MusteriSayfasi extends AppCompatActivity {
     int db_girisSayisi;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    ArcProgress arcProgress;
+    int progressStatus=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musteri_sayfasi);
-
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = preferences.edit();
@@ -63,19 +64,16 @@ public class MusteriSayfasi extends AppCompatActivity {
         dbRef=FirebaseDatabase.getInstance().getReference();
         mAuth=FirebaseAuth.getInstance();
 
-
-
+        arcProgress=(ArcProgress)findViewById(R.id.pb);
         tv_hosgeldiniz=(TextView) findViewById(R.id.hosgeldiniz);
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
-
-
-
+        tv=(TextView)findViewById(R.id.tv);
 
         eposta=preferences.getString("eposta","");
 
         isimGetir();
         beaconBagla();
-        
+
 
 
     }
@@ -95,12 +93,14 @@ public class MusteriSayfasi extends AppCompatActivity {
 
                    if(gelenEposta.equals(eposta)){
                        tv_hosgeldiniz.setText("Hoşgeldiniz, " +isimler.getValue(Musteri.class).getAd()+" "+isimler.getValue(Musteri.class).getSoyad());
-                       tv_girisSayisi.setText(Integer.toString(isimler.getValue(Musteri.class).getGirisSayisi()));
 
-                       if(isimler.getValue(Musteri.class).getAdmin() =="1")
-                       {
+                       db_girisSayisi=isimler.getValue(Musteri.class).getGirisSayisi();
+                       tv_girisSayisi.setText(Integer.toString(db_girisSayisi));
 
-                       }
+                       arcProgress.setProgress(db_girisSayisi*10);
+                       tv.setText(db_girisSayisi+"/10");
+
+
                     }
                 }
             }
@@ -191,6 +191,10 @@ public class MusteriSayfasi extends AppCompatActivity {
                         dbRef.child("Müşteri").child(kisiler.getKey().toString()).child("girisSayisi").setValue(db_girisSayisi);
                         tv_girisSayisi.setText("Giriş sayınız: "+kisiler.getValue(Musteri.class).getGirisSayisi());
 
+                        arcProgress.setProgress(db_girisSayisi*10);
+                        tv.setText(db_girisSayisi+"/10");
+
+
                     }
                 }
             }
@@ -239,4 +243,5 @@ public class MusteriSayfasi extends AppCompatActivity {
 
         }
     }
+
 }

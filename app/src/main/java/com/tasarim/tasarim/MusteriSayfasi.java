@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -47,12 +48,14 @@ public class MusteriSayfasi extends AppCompatActivity {
     SharedPreferences.Editor editor;
     ArcProgress arcProgress;
     int progressStatus=0;
-
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musteri_sayfasi);
+
+
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = preferences.edit();
@@ -186,12 +189,13 @@ public class MusteriSayfasi extends AppCompatActivity {
 
                     if(gelenEposta.equals(eposta)){
 
-                        db_girisSayisi=kisiler.getValue(Musteri.class).getGirisSayisi();
+                        db_girisSayisi=kisiler.getValue(Musteri.class).getGirisSayisi(); progressStatus=db_girisSayisi;
                         db_girisSayisi++;
                         dbRef.child("Müşteri").child(kisiler.getKey().toString()).child("girisSayisi").setValue(db_girisSayisi);
                         tv_girisSayisi.setText("Giriş sayınız: "+kisiler.getValue(Musteri.class).getGirisSayisi());
 
-                        arcProgress.setProgress(db_girisSayisi*10);
+                        
+                        progressBarStatusChange(db_girisSayisi*10);
                         tv.setText(db_girisSayisi+"/10");
 
 
@@ -212,6 +216,33 @@ public class MusteriSayfasi extends AppCompatActivity {
 
 
 
+    }
+
+    public void progressBarStatusChange(final int status){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(progressStatus < status){
+
+                    progressStatus +=1;
+
+                    try{
+                        Thread.sleep(20);
+                    }catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
+
+                    // Update the progress bar
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            arcProgress.setProgress(progressStatus);
+
+                        }
+                    });
+                }
+            }
+        }).start(); // Start the operation
     }
 
     @Override

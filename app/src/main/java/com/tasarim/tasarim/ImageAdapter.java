@@ -1,6 +1,5 @@
 package com.tasarim.tasarim;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
@@ -64,7 +63,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             textViewName = itemView.findViewById(R.id.text_view_name);
             imageView = itemView.findViewById(R.id.image_view_upload);
 
-            
+
             preferences = PreferenceManager.getDefaultSharedPreferences(mContext);//preferences objesi
             editor = preferences.edit();
             String rol=preferences.getString("rol","");
@@ -92,11 +91,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Select Action");
-            MenuItem doWhatever = menu.add(Menu.NONE, 1, 1, "Do whatever");
-            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
 
-            doWhatever.setOnMenuItemClickListener(this);
+
+            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Sil");
+
+
             delete.setOnMenuItemClickListener(this);
         }
 

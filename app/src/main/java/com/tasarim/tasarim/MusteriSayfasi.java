@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -79,6 +80,11 @@ public class MusteriSayfasi extends AppCompatActivity {
 
 
 
+    }
+
+    public void MenüGöster(View v){
+        Intent ıntent=new Intent(this,ImagesActivity.class);
+        this.startActivity(ıntent);
     }
 
 

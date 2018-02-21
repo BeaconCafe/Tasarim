@@ -38,9 +38,8 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".MusteriSayfasi" />
         <activity android:name=".AdminSayfasi" />
-        <activity android:name=".AdminMenu"></activity>
-        <activity android:name=".ImagesActivity"></activity>
-
+        <activity android:name=".AdminMenu" />
+        <activity android:name=".ImagesActivity" />
     </application>
 
 </manifest>

@@ -49,7 +49,9 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemClickListener(ImagesActivity.this);
+      mAdapter.setOnItemClickListener(ImagesActivity.this);
+
+
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");

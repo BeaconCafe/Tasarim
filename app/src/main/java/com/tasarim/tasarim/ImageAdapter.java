@@ -1,5 +1,8 @@
 package com.tasarim.tasarim;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -19,6 +22,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     private Context mContext;
     private List<Upload> mUploads;
     private OnItemClickListener mListener;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     public ImageAdapter(Context context, List<Upload> uploads) {
         mContext = context;
@@ -59,8 +64,20 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             textViewName = itemView.findViewById(R.id.text_view_name);
             imageView = itemView.findViewById(R.id.image_view_upload);
 
-            itemView.setOnClickListener(this);
-            itemView.setOnCreateContextMenuListener(this);
+            
+            preferences = PreferenceManager.getDefaultSharedPreferences(mContext);//preferences objesi
+            editor = preferences.edit();
+            String rol=preferences.getString("rol","");
+            if(rol.equals("müşteri")){
+               itemView.setOnClickListener(null);
+               itemView.setOnCreateContextMenuListener(null);
+            }
+            else if(rol.equals("admin")){
+                itemView.setOnClickListener(this);
+                itemView.setOnCreateContextMenuListener(this);
+            }
+
+
         }
 
         @Override

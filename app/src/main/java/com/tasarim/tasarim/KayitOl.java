@@ -117,7 +117,7 @@ public class KayitOl extends AppCompatActivity {
                     String id=currentMusteri.getUid();
 
 
-                    musteriEkle(id,edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0);
+                    musteriEkle(id,edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0,0);
                     editor.putBoolean("login",true);
                     editor.commit();
                 }
@@ -129,13 +129,14 @@ public class KayitOl extends AppCompatActivity {
         });
     }
 
-    public void musteriEkle(String id,String eposta,String isim,String soyisim,int girisSayisi) {
+    public void musteriEkle(String id,String eposta,String isim,String soyisim,int girisSayisi,int ikramSayisi) {
         Musteri musteri = new Musteri();
         musteri.setAd(isim);
         musteri.setSoyad(soyisim);
         musteri.setEposta(eposta);
         musteri.setGirisSayisi(girisSayisi);
         musteri.setAdmin("0");
+        musteri.setIkramSayisi(ikramSayisi);
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Müşteri");
        // String uid=dbRef.push().getKey();

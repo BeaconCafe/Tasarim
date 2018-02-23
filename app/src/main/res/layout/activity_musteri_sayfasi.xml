@@ -79,10 +79,12 @@
             android:layout_height="100dp"
             custom:arc_progress="0"
             custom:arc_suffix_text=" "
+            app:arc_stroke_width="8dp"
             custom:arc_text_size="0dp"
             android:layout_marginTop="10dp"
             custom:arc_unfinished_color="#d7d9e0"
             custom:arc_finished_color="@color/colorPrimaryDark"
+
             />
         <TextView
             android:id="@+id/tv"
@@ -120,7 +122,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="İkram İçeceğiniz"
                 android:layout_marginTop="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
@@ -129,9 +130,7 @@
                 android:id="@+id/ikramSayisi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="5dp"
-                android:text="5"
                 android:textSize="34sp" />
 
             <TextView

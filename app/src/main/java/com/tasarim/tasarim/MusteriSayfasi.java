@@ -30,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -37,19 +39,20 @@ import java.util.UUID;
 
 public class MusteriSayfasi extends AppCompatActivity {
 
-    TextView tv_hosgeldiniz, tv_girisSayisi,tv;
+    TextView tv_hosgeldiniz, tv_girisSayisi,tv,tv_ikramSayisi;
     FirebaseDatabase db;
     FirebaseAuth mAuth;
     String eposta;
     BeaconManager beaconManager;
     String gelenEposta;
     DatabaseReference dbRef;
-    int db_girisSayisi;
+    int db_girisSayisi,db_ikramSayisi;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     ArcProgress arcProgress;
     int progressStatus=0;
     private Handler handler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class MusteriSayfasi extends AppCompatActivity {
         tv_hosgeldiniz=(TextView) findViewById(R.id.hosgeldiniz);
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
         tv=(TextView)findViewById(R.id.tv);
+        tv_ikramSayisi=(TextView)findViewById(R.id.ikramSayisi);
 
         eposta=preferences.getString("eposta","");
 
@@ -90,7 +94,6 @@ public class MusteriSayfasi extends AppCompatActivity {
 
     public void isimGetir(){
 
-
         DatabaseReference dbIsimler=db.getReference("Müşteri");
 
         dbIsimler.addValueEventListener(new ValueEventListener() {
@@ -106,8 +109,13 @@ public class MusteriSayfasi extends AppCompatActivity {
                        db_girisSayisi=isimler.getValue(Musteri.class).getGirisSayisi();
                        tv_girisSayisi.setText(Integer.toString(db_girisSayisi));
 
+                       db_ikramSayisi=isimler.getValue(Musteri.class).getIkramSayisi();
+                       tv_ikramSayisi.setText(Integer.toString(db_ikramSayisi));
+
+
+
                        arcProgress.setProgress(db_girisSayisi*10);
-                       tv.setText(db_girisSayisi+"/10");
+                       tv.setText((db_girisSayisi-(db_ikramSayisi*10))+"/10");
 
 
                     }
@@ -184,7 +192,6 @@ public class MusteriSayfasi extends AppCompatActivity {
 
     public void girisSayisiArttır(final String eposta){
 
-
         DatabaseReference dbIsimler=db.getReference("Müşteri");
         dbIsimler.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -196,13 +203,22 @@ public class MusteriSayfasi extends AppCompatActivity {
                     if(gelenEposta.equals(eposta)){
 
                         db_girisSayisi=kisiler.getValue(Musteri.class).getGirisSayisi(); progressStatus=db_girisSayisi;
+
                         db_girisSayisi++;
                         dbRef.child("Müşteri").child(kisiler.getKey().toString()).child("girisSayisi").setValue(db_girisSayisi);
-                        tv_girisSayisi.setText("Giriş sayınız: "+kisiler.getValue(Musteri.class).getGirisSayisi());
+                        tv_girisSayisi.setText(Integer.toString(kisiler.getValue(Musteri.class).getGirisSayisi()));
 
-                        
-                        progressBarStatusChange(db_girisSayisi*10);
-                        tv.setText(db_girisSayisi+"/10");
+
+                        if(db_girisSayisi%10==0){
+                            db_ikramSayisi=kisiler.getValue(Musteri.class).getIkramSayisi();
+                            db_ikramSayisi++;
+                            dbRef.child("Müşteri").child(kisiler.getKey().toString()).child("ikramSayisi").setValue(db_ikramSayisi);
+                            tv_ikramSayisi.setText(Integer.toString(kisiler.getValue(Musteri.class).getIkramSayisi()));
+
+                        }
+                        arcProgress.setProgress(db_girisSayisi*10);
+                        tv.setText((db_girisSayisi-(db_ikramSayisi*10))+"/10");
+
 
 
                     }
@@ -215,41 +231,8 @@ public class MusteriSayfasi extends AppCompatActivity {
             }
         });
 
-
-        isimGetir();
-
-
-
-
-
     }
 
-    public void progressBarStatusChange(final int status){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(progressStatus < status){
-
-                    progressStatus +=1;
-
-                    try{
-                        Thread.sleep(20);
-                    }catch(InterruptedException e){
-                        e.printStackTrace();
-                    }
-
-                    // Update the progress bar
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            arcProgress.setProgress(progressStatus);
-
-                        }
-                    });
-                }
-            }
-        }).start(); // Start the operation
-    }
 
     @Override
     protected void onResume() {

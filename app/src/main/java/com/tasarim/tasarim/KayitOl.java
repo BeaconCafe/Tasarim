@@ -35,6 +35,7 @@ public class KayitOl extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kayit_ol);
 
+        getWindow().setBackgroundDrawableResource(R.drawable.kayitsayfasi) ;
         this.setTitle("Kayıt Ol");
         edt_mail=(EditText)findViewById(R.id.email);
         edt_sifre=(EditText)findViewById(R.id.sifre);

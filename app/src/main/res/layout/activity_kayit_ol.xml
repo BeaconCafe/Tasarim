@@ -9,7 +9,7 @@
     android:isScrollContainer="true"
     android:descendantFocusability="beforeDescendants"
     tools:context="com.tasarim.tasarim.KayitOl"
-    android:background="@drawable/kayitsayfasi"
+
     android:gravity="center"
     >
     <ScrollView

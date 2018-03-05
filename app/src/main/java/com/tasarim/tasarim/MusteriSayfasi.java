@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -51,7 +50,7 @@ public class MusteriSayfasi extends AppCompatActivity {
     SharedPreferences.Editor editor;
     ArcProgress arcProgress;
     int progressStatus=0;
-    private Handler handler = new Handler();
+
 
 
     @Override

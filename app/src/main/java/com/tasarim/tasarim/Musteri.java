@@ -5,15 +5,15 @@ package com.tasarim.tasarim;
  */
 
 public class Musteri {
-    private String eposta, ad, soyad,admin;
-    private int girisSayisi,ikramSayisi;
+    private String eposta, ad, soyad,admin,cinsiyet;
+    private int girisSayisi,ikramSayisi,yas;
 
     public Musteri(){
 
     }
 
 
-    public Musteri(String eposta, String ad, String soyad,String admin, int girisSayisi,int ikramSayisi){
+    public Musteri(String eposta, String ad, String soyad,String admin, int girisSayisi,int ikramSayisi,String cinsiyet, int yas){
 
         this.eposta=eposta;
         this.ad=ad;
@@ -21,6 +21,8 @@ public class Musteri {
         this.girisSayisi=girisSayisi;
         this.admin="1";
         this.ikramSayisi=ikramSayisi;
+        this.cinsiyet=cinsiyet;
+        this.yas=yas;
 
     }
 
@@ -72,5 +74,21 @@ public class Musteri {
 
     public void setIkramSayisi(int ikramSayisi) {
         this.ikramSayisi = ikramSayisi;
+    }
+
+    public String getCinsiyet() {
+        return cinsiyet;
+    }
+
+    public void setCinsiyet(String cinsiyet) {
+        this.cinsiyet = cinsiyet;
+    }
+
+    public int getYas() {
+        return yas;
+    }
+
+    public void setYas(int yas) {
+        this.yas = yas;
     }
 }

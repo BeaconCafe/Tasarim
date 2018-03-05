@@ -1,8 +1,10 @@
 package com.tasarim.tasarim;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +13,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,13 +28,23 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+
 public class KayitOl extends AppCompatActivity {
 
-    EditText edt_mail, edt_sifre,edt_ad,edt_soyad;
+    EditText edt_mail, edt_sifre,edt_ad,edt_soyad,edt_dogumTarihi;
+    RadioGroup radioGroup;
+    RadioButton radioKadin,radioErkek;
+    ImageButton dateTime;
     Button btn_kayitOl, btn_giris;
     FirebaseAuth mAuth;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
+    Context context=this;
+    String secilenCinsiyet;
+
+    int yas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +53,24 @@ public class KayitOl extends AppCompatActivity {
 
         getWindow().setBackgroundDrawableResource(R.drawable.kayitsayfasi) ;
         this.setTitle("Kayıt Ol");
+
         edt_mail=(EditText)findViewById(R.id.email);
         edt_sifre=(EditText)findViewById(R.id.sifre);
         edt_ad=(EditText)findViewById(R.id.isim);
         edt_soyad=(EditText)findViewById(R.id.soyisim);
+        edt_dogumTarihi=(EditText)findViewById(R.id.dogumTarihi);
+
+        dateTime=(ImageButton)findViewById(R.id.datetime);
 
         btn_kayitOl=(Button)findViewById(R.id.kayitOl);
         btn_giris=(Button)findViewById(R.id.girisSayfasi);
 
-        mAuth=FirebaseAuth.getInstance();
 
+        radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+        radioKadin=(RadioButton)findViewById(R.id.radio_kadin);
+        radioErkek=(RadioButton)findViewById(R.id.radio_erkek);
+
+        mAuth=FirebaseAuth.getInstance();
 
         preferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor=preferences.edit();
@@ -79,19 +103,38 @@ public class KayitOl extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        dateTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar takvim = Calendar.getInstance();
+                int yil = takvim.get(Calendar.YEAR);
+                int ay = takvim.get(Calendar.MONTH);
+                int gun = takvim.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dpd = new DatePickerDialog(context,android.R.style.Theme_DeviceDefault_Light_Dialog,new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                                month += 1;
+
+                                edt_dogumTarihi.setText(dayOfMonth + "/" + month + "/" + year);
+
+                                yas= 2018-year;
+                            }
+                        }, yil, ay, gun);
+
+
+
+                dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
+                dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);
+                dpd.show();
+            }
+        });
+
     }
 
-    public void showSoftKeyboard(View view) {
-        if (edt_ad.requestFocus()| edt_soyad.requestFocus()| edt_sifre.requestFocus()|edt_mail.requestFocus()) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-            imm.showSoftInput(edt_ad, InputMethodManager.SHOW_IMPLICIT);
-            imm.showSoftInput(edt_soyad,InputMethodManager.SHOW_IMPLICIT);
-            imm.showSoftInput(edt_mail,InputMethodManager.SHOW_IMPLICIT);
-            imm.showSoftInput(edt_sifre,InputMethodManager.SHOW_IMPLICIT);
-            //  imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-        }
-    }
 
 
     public void klavyekapat(View v) {
@@ -118,7 +161,21 @@ public class KayitOl extends AppCompatActivity {
                     String id=currentMusteri.getUid();
 
 
-                    musteriEkle(id,edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0,0);
+                    int secilenRadio=radioGroup.getCheckedRadioButtonId();
+                    switch (secilenRadio){
+                        case R.id.radio_kadin:
+                            secilenCinsiyet=radioKadin.getText().toString();
+                            break;
+                        case R.id.radio_erkek:
+                            secilenCinsiyet=radioErkek.getText().toString();
+                            break;
+                            default:
+                                break;
+                    }
+
+
+
+                    musteriEkle(id,edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0,0,secilenCinsiyet,yas);
                     editor.putBoolean("login",true);
                     editor.commit();
                 }
@@ -130,7 +187,7 @@ public class KayitOl extends AppCompatActivity {
         });
     }
 
-    public void musteriEkle(String id,String eposta,String isim,String soyisim,int girisSayisi,int ikramSayisi) {
+    public void musteriEkle(String id,String eposta,String isim,String soyisim,int girisSayisi,int ikramSayisi,String cinsiyet,int yas) {
         Musteri musteri = new Musteri();
         musteri.setAd(isim);
         musteri.setSoyad(soyisim);
@@ -138,6 +195,8 @@ public class KayitOl extends AppCompatActivity {
         musteri.setGirisSayisi(girisSayisi);
         musteri.setAdmin("0");
         musteri.setIkramSayisi(ikramSayisi);
+        musteri.setCinsiyet(cinsiyet);
+        musteri.setYas(yas);
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Müşteri");
        // String uid=dbRef.push().getKey();

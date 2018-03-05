@@ -1,106 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.tasarim.tasarim.Giris"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:onClick="klavyekapat"
+    android:orientation="vertical">
 
 
-    android:gravity="center"
-    tools:context="com.tasarim.tasarim.Giris">
-    <RelativeLayout
-        android:id="@+id/center_layout"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="40dp"
-
-        android:layout_width="fill_parent"
-        android:layout_height="500dp">
-        <LinearLayout
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
 
         <EditText
             android:id="@+id/kullaniciAdi"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:focusable="true"
-            android:inputType="textEmailAddress"
-            android:background="@drawable/background"
-            android:backgroundTint="#80ffffff"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:hint=" E-posta"
-            />
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:autoLink="email"
+            android:backgroundTint="@color/colorAccent"
+
+            android:gravity="center"
+            android:hint="Email"
+
+            android:textStyle="normal|italic" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/sifre"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:background="@drawable/background"
-            android:backgroundTint="#80ffffff"
-            android:focusable="true"
-            android:inputType="textPassword"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:hint="Şifre"/>
-
-
-        <Button
-            android:id="@+id/giris"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:gravity="center"
-            android:background="@drawable/ripple"
-            android:backgroundTint="@color/yesil"
-            android:text="GİRİŞ" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:hint="Password"
+            android:textStyle="normal|italic" />
+    </android.support.design.widget.TextInputLayout>
 
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hesabınız yok mu?"
-                android:textColor="@color/colorAccent"
-                android:textSize="16dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/giris"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
 
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"/>
+        android:src="@drawable/oklogin"
 
-            <TextView
-                android:id="@+id/kayitOlSayfasi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:text="Üye Ol"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="16dp"
-
-                android:textColor="@color/colorAccent" />
+        />
+    <TextView
+        android:id="@+id/kayitOlSayfasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEW ACCOUNT"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
 
 
-        </LinearLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
 
-    </RelativeLayout>
 
+
+
+
+
+</LinearLayout>

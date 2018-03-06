@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
@@ -31,7 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.UUID;
 
 
@@ -80,6 +83,7 @@ public class MusteriSayfasi extends AppCompatActivity {
 
         isimGetir();
         beaconBagla();
+
 
 
 
@@ -171,7 +175,7 @@ public class MusteriSayfasi extends AppCompatActivity {
             public void onEnteredRegion(BeaconRegion region, List<Beacon> list) {
                 bildirimAt("hoşgeldiniz","merhaba");
                 girisSayisiArttır(eposta);
-
+                ayVerisiArttir();
             }
 
             @Override
@@ -232,6 +236,82 @@ public class MusteriSayfasi extends AppCompatActivity {
 
     }
 
+    int sayi=-1;
+
+    public void ayVerisiArttir(){
+
+        Calendar takvim = Calendar.getInstance(TimeZone.getDefault());
+        final int ay = takvim.get(Calendar.MONTH);
+
+
+        DatabaseReference dbAylar=db.getReference("Aylar");
+
+        dbAylar.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(ay==0){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Ocak").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Ocak").setValue(sayi);
+
+                }
+                if(ay==1){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Şubat").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Şubat").setValue(sayi);
+
+                }if(ay==2){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Mart").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Mart").setValue(sayi);
+
+                }if(ay==3){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Nisan").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Nisan").setValue(sayi);
+
+                }if(ay==4){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Mayıs").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Mayıs").setValue(sayi);
+
+                }if(ay==5){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Haziran").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Haziran").setValue(sayi);
+
+                }if(ay==6){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Temmuz").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Temmuz").setValue(sayi);
+
+                }if(ay==7){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Ağustos").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Ağustos").setValue(sayi);
+
+                }if(ay==8){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Eylül").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Eylül").setValue(sayi);
+
+                }if(ay==9){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Ekim").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Ekim").setValue(sayi);
+
+                }if(ay==10){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Kasım").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Kasım").setValue(sayi);
+
+                }
+                if(ay==11){
+                    sayi=  Integer.parseInt(dataSnapshot.child("Aralık").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("Aralık").setValue(sayi);
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     @Override
     protected void onResume() {

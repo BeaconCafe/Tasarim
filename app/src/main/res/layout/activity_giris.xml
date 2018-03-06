@@ -24,6 +24,7 @@
             android:gravity="center"
             android:hint="Email"
 
+            android:inputType="textEmailAddress"
             android:textStyle="normal|italic" />
     </android.support.design.widget.TextInputLayout>
 
@@ -39,6 +40,7 @@
             android:backgroundTint="@color/colorAccent"
             android:gravity="center"
             android:hint="Password"
+            android:inputType="textPassword"
             android:textStyle="normal|italic" />
     </android.support.design.widget.TextInputLayout>
 
@@ -52,14 +54,16 @@
         android:src="@drawable/oklogin"
 
         />
+
     <TextView
         android:id="@+id/kayitOlSayfasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEW ACCOUNT"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
+        android:text="YENİ HESAP"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
 

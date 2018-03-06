@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Tasarim.iml" filepath="$PROJECT_DIR$/Tasarim.iml" />
       <module fileurl="file://C:\Users\Lenovo\Documents\GitHub\Tasarim\Tasarim.iml" filepath="C:\Users\Lenovo\Documents\GitHub\Tasarim\Tasarim.iml" />
+      <module fileurl="file://C:\Users\fatma\Documents\GitHub\Tasarim\Tasarim.iml" filepath="C:\Users\fatma\Documents\GitHub\Tasarim\Tasarim.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Lenovo\Documents\GitHub\Tasarim\app\app.iml" filepath="C:\Users\Lenovo\Documents\GitHub\Tasarim\app\app.iml" />
+      <module fileurl="file://C:\Users\fatma\Documents\GitHub\Tasarim\app\app.iml" filepath="C:\Users\fatma\Documents\GitHub\Tasarim\app\app.iml" />
     </modules>
   </component>
 </project>

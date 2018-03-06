@@ -1,76 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tasarim.tasarim.Giris"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="klavyekapat"
-    android:orientation="vertical">
+    android:orientation="vertical"
 
+    android:isScrollContainer="true"
+    android:descendantFocusability="beforeDescendants"
+    tools:context="com.tasarim.tasarim.Giris"
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp">
-
-        <EditText
-            android:id="@+id/kullaniciAdi"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:autoLink="email"
-            android:backgroundTint="@color/colorAccent"
-
-            android:gravity="center"
-            android:hint="Email"
-
-            android:inputType="textEmailAddress"
-            android:textStyle="normal|italic" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+    android:gravity="center"
+    >
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/sifre"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/colorAccent"
-            android:gravity="center"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textStyle="normal|italic" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/giris"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-
-        android:src="@drawable/oklogin"
-
-        />
-
-    <TextView
-        android:id="@+id/kayitOlSayfasi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="YENİ HESAP"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/center_layout"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="40dp"
+            android:layout_width="fill_parent"
+            android:layout_height="500dp">
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
 
 
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp">
+
+                    <EditText
+                        android:id="@+id/kullaniciAdi"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:autoLink="email"
+                        android:backgroundTint="@color/colorAccent"
+                        android:inputType="textEmailAddress"
+                        android:gravity="center"
+                        android:hint="Email"
+
+                        android:textStyle="normal|italic" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/sifre"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/colorAccent"
+                        android:gravity="center"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textStyle="normal|italic" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/giris"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+
+                    android:src="@drawable/oklogin"
+
+                    />
+                <TextView
+                    android:id="@+id/kayitOlSayfasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YENİ HESAP"
+                    android:layout_marginTop="40dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
 
 
 
 
+            </LinearLayout>
 
-
-</LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

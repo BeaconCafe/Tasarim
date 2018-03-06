@@ -4,101 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:onClick="showSoftKeyboard"
-    android:isScrollContainer="true"
+    android:background="#ffffff"
     android:descendantFocusability="beforeDescendants"
-    tools:context="com.tasarim.tasarim.KayitOl"
-    android:background="#2e3224"
     android:gravity="center"
-    >
+    android:isScrollContainer="true"
+    android:orientation="vertical"
+
+    tools:context="com.tasarim.tasarim.KayitOl">
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/center_layout"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="40dp"
             android:layout_width="fill_parent"
-            android:layout_height="500dp">
+            android:layout_height="500dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
             <LinearLayout
-                android:layout_centerInParent="true"
-                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
 
-    <EditText
-        android:background="@drawable/background"
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="#80FFFFFF"
-        android:ems="10"
-        android:fontFamily="serif"
-        android:hint="  E-posta"
-        android:layout_marginBottom="30dp"
-        android:inputType="textEmailAddress"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
 
-    <EditText
-        android:id="@+id/isim"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:backgroundTint="#80FFFFFF"
-        android:ems="10"
-        android:background="@drawable/background"
-        android:fontFamily="serif"
-        android:hint="  İsim"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
-    <EditText
-        android:background="@drawable/background"
-        android:id="@+id/soyisim"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="#80FFFFFF"
-        android:ems="10"
-        android:fontFamily="serif"
-        android:hint="  Soyisim"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="50dp"
+
+                        android:layout_marginRight="50dp"
+                        android:autoLink="email"
+                        android:backgroundTint="@color/colorAccent"
+
+                        android:gravity="start"
+                        android:hint="Email"
+                        android:textStyle="normal|italic" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/isim"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/colorAccent"
+                        android:gravity="start"
+                        android:hint="İsim"
+                        android:textStyle="normal|italic" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/soyisim"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/colorAccent"
+                        android:gravity="start"
+                        android:hint="Soyisim"
+                        android:textStyle="normal|italic" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/radioGroup"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="25dp"
-                    android:id="@+id/radioGroup">
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radio_kadin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kadın"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/colorAccent"
                         android:textSize="18sp"
 
                         android:textStyle="bold" />
@@ -109,94 +112,103 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:text="Erkek"
-                        android:textColor="#ffffff"
-                        android:textSize="18sp" />
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </RadioGroup>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="25dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
 
-            <EditText
-                android:id="@+id/dogumTarihi"
-                android:layout_width="195dp"
-                android:layout_height="35dp"
-                android:backgroundTint="#80FFFFFF"
-                android:ems="10"
-                android:background="@drawable/background"
-                android:fontFamily="serif"
-                android:hint="  GG/AA/YYYY"
-                android:inputType="textPersonName"
-                android:selectAllOnFocus="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColorHint="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:typeface="sans" />
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/datetime"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/datetime"
-                android:background="#ffffff"
-                android:scaleType="fitXY"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="50dp"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="195dp"
+                        android:layout_height="wrap_content">
 
-        </LinearLayout>
-
-    <EditText
-        android:background="@drawable/background"
-        android:id="@+id/sifre"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="#80FFFFFF"
-        android:ems="10"
-        android:fontFamily="serif"
-        android:hint="  Şifre"
-        android:inputType="textPassword"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
-
-        <Button
-            android:id="@+id/kayitOl"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="25dp"
-            android:fontFamily="serif"
-            android:text="Kayıt Ol"
-            android:backgroundTint="@color/yesil"
-            android:background="@drawable/ripple"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/girisSayfasi"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="25dp"
-            android:fontFamily="serif"
-            android:text="Giriş yap"
-            android:backgroundTint="@color/yesil"
-            android:background="@drawable/ripple"
-            android:textStyle="bold" />
+                        <EditText
+                            android:id="@+id/dogumTarihi"
+                            android:layout_width="195dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/colorAccent"
+                            android:gravity="start"
+                            android:hint="GG/AA/YY"
+                            android:inputType="textPersonName"
+                            android:selectAllOnFocus="false"
+                            android:textStyle="normal|italic" />
 
 
-    </LinearLayout>
+                    </android.support.design.widget.TextInputLayout>
 
-</RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/datetime"
+                        android:layout_width="35dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="50dp"
+                        android:background="#ffffff"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/datetime" />
+
+
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/sifre"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="25dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:gravity="start"
+
+                        android:hint="Sifre"
+                        android:inputType="textPassword"
+                        android:textStyle="normal|italic" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/kayitOl"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/ripple"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="serif"
+                    android:text="Kayıt Ol"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/girisSayfasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/ripple"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="serif"
+                    android:text="Giriş yap"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

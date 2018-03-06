@@ -14,7 +14,7 @@ public class Upload {
 
     public Upload(String name, String imageUrl) {
         if (name.trim().equals("")) {
-            name = "No Name";
+            name = "İsimsiz";
         }
 
         mName = name;

@@ -74,7 +74,7 @@ public class AdminMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    Toast.makeText(AdminMenu.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminMenu.this, "Yükleme yapılıyor", Toast.LENGTH_SHORT).show();
                 } else {
                     uploadFile();
                 }

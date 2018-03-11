@@ -40,7 +40,11 @@ dependencies {
     compile 'com.estimote:sdk:1.4.0'
 
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
 }
+
 
 
 

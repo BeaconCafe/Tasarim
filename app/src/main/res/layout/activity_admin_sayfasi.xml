@@ -12,13 +12,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="46dp"
-        android:layout_marginRight="46dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginTop="77dp"
         android:onClick="MenüyeSayfaEkle"
         android:text="Menü" />
 
-
+    <Button
+        android:id="@+id/analizSayfasinaGit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/menüekle"
+        android:layout_alignBottom="@+id/menüekle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp"
+        android:text="Analiz sayfası" />
 </RelativeLayout>

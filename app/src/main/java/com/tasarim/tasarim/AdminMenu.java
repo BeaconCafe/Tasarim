@@ -131,7 +131,7 @@ public class AdminMenu extends AppCompatActivity {
                                 }
                             }, 500);
 
-                            Toast.makeText(AdminMenu.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AdminMenu.this, "Yükleme Başarılı", Toast.LENGTH_LONG).show();
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),
                                     taskSnapshot.getDownloadUrl().toString());
                             String uploadId = mDatabaseRef.push().getKey();
@@ -152,7 +152,7 @@ public class AdminMenu extends AppCompatActivity {
                         }
                     });
         } else {
-            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Öğe seçilmedi", Toast.LENGTH_SHORT).show();
         }
     }
 

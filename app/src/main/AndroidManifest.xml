@@ -40,7 +40,8 @@
         <activity android:name=".AdminSayfasi" />
         <activity android:name=".AdminMenu" />
         <activity android:name=".ImagesActivity" />
-        <activity android:name=".AnalizSayfasi"></activity>
+        <activity android:name=".AnalizSayfasi" />
+        <activity android:name=".AnalizCinsiyet"></activity>
     </application>
 
 </manifest>

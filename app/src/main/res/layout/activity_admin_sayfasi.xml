@@ -27,4 +27,14 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="33dp"
         android:text="Analiz sayfası" />
+
+
+    <Button
+        android:id="@+id/analizCinsiyetSayfasinaGit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/analizSayfasinaGit"
+        android:layout_below="@+id/analizSayfasinaGit"
+        android:layout_marginTop="33dp"
+        android:text="Cinsiyet Analiz" />
 </RelativeLayout>

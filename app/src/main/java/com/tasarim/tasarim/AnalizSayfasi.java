@@ -1,12 +1,15 @@
 package com.tasarim.tasarim;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -22,7 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AnalizSayfasi extends AppCompatActivity {
+public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    private SwipeRefreshLayout yenileme_nesnesi;
 
     ProgressBar pb;
     FirebaseDatabase db;
@@ -40,6 +45,10 @@ public class AnalizSayfasi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analiz_sayfasi);
 
+        yenileme_nesnesi = (SwipeRefreshLayout)findViewById(R.id.yenileme_nesnesi); // nesnemizi tanıttık
+        yenileme_nesnesi.setOnRefreshListener(this); // nesnenin bu Class içerinde çalışağını belirttik
+        // uygulama başlar başlamaz aktif oldu bu şekilde
+
 
         db=FirebaseDatabase.getInstance();
         dbRef=FirebaseDatabase.getInstance().getReference();
@@ -56,6 +65,19 @@ public class AnalizSayfasi extends AppCompatActivity {
 
         setupPieChart();
 
+    }
+
+
+    @Override
+    public void onRefresh() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+
+        Toast.makeText(AnalizSayfasi.this, "Yenileme başarılı", Toast.LENGTH_LONG).show();
+        yenileme_nesnesi.setRefreshing(false); /* nesnenin yenileme özelliği kapatıldı
+         aksi halde sürekli çalışır bu kısmı işleminiz yapılsada yapılmasada kullanın çünkü işlem başarısız olsada
+         hata mesajı verirsiniz ama işlem yapılana kadar olan kısımda bu kodu kullanmayın sonrası için kullanın */
     }
 
     public void setupPieChart(){

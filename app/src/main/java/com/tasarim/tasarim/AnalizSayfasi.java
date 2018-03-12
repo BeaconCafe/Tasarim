@@ -1,16 +1,19 @@
 package com.tasarim.tasarim;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,10 +28,12 @@ public class AnalizSayfasi extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference dbRef;
 
-    PieChart chart;
+    BarChart chart;
 
-    String aylar[]={"Aralık","Ağustos","Ekim","Eylül","Haziran",
-            "Kasım","Mart","Mayıs","Nisan","Ocak","Temmuz","Şubat"};
+    ArrayList<String> aylar=new ArrayList<String>();
+
+//    String aylar[]={"Aralık","Ağustos","Ekim","Eylül","Haziran",
+//            "Kasım","Mart","Mayıs","Nisan","Ocak","Temmuz","Şubat"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +44,14 @@ public class AnalizSayfasi extends AppCompatActivity {
         db=FirebaseDatabase.getInstance();
         dbRef=FirebaseDatabase.getInstance().getReference();
 
-        chart=(PieChart)findViewById(R.id.pieChart);
+        chart=(BarChart)findViewById(R.id.barChart);
         pb=(ProgressBar)findViewById(R.id.progress_bar);
+
+
+        aylar.add("Ocak");aylar.add("Şubat"); aylar.add("Mart");aylar.add("Nisan");aylar.add("Mayıs");
+        aylar.add("Haziran");aylar.add("Temmuz");aylar.add("Ağustos");aylar.add("Eylül");aylar.add("Ekim");
+        aylar.add("Kasım");aylar.add("Aralık");
+
 
 
         setupPieChart();
@@ -49,7 +60,7 @@ public class AnalizSayfasi extends AppCompatActivity {
 
     public void setupPieChart(){
 
-        final ArrayList<PieEntry> pieEntries=new ArrayList<>();
+        final ArrayList<BarEntry> barEntries=new ArrayList<>();
 
         final int[] INCOME_COLORS = {
                 Color.rgb(119, 136, 153),
@@ -67,12 +78,12 @@ public class AnalizSayfasi extends AppCompatActivity {
         };
 
 
-        chart.setDrawHoleEnabled(false);
+
         chart.setNoDataText("");
 
         Legend legend = chart.getLegend();
         legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART_INSIDE);
+        legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
 
 
         final DatabaseReference dbAylar=db.getReference().child("Aylar");
@@ -82,19 +93,23 @@ public class AnalizSayfasi extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i=0;
                 for(DataSnapshot key:dataSnapshot.getChildren()){
-                    pieEntries.add(new PieEntry(Float.parseFloat(key.getValue().toString()),aylar[i]));
+                    if(!key.getValue().toString().equals("0")){
+                        barEntries.add(new BarEntry(Float.parseFloat(key.getValue().toString()),i));
+                    }
+
                     i++;
                 }
                 pb.setVisibility(View.GONE);
-                chart.notifyDataSetChanged();
-                PieDataSet dataSet=new PieDataSet(pieEntries,"");
 
-                PieData data=new PieData(dataSet);
-                dataSet.setSliceSpace(4);
+                chart.notifyDataSetChanged();
+                BarDataSet dataSet=new BarDataSet(barEntries,"Aylar");
+
+                chart.setDescription("");
+                BarData data=new BarData(aylar,dataSet);
                 dataSet.setColors(INCOME_COLORS);
-                dataSet.setValueTextSize(10f);
                 chart.setData(data);
                 chart.invalidate();
+                dataSet.setValueTextSize(5);
 
 
             }
@@ -104,6 +119,20 @@ public class AnalizSayfasi extends AppCompatActivity {
 
             }
         });
+
+
+        chart.setTouchEnabled(true);
+        chart.setDragEnabled(true);
+        chart.setScaleEnabled(true);
+
+
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        xAxis.setDrawGridLines(false);
+        xAxis.setDrawAxisLine(true);
+
+
 
 
     }

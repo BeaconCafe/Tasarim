@@ -251,54 +251,54 @@ public class MusteriSayfasi extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if(ay==0){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Ocak").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Ocak").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("a_Ocak").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("a_Ocak").setValue(sayi);
 
                 }
                 if(ay==1){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Şubat").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Şubat").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("b_Şubat").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("b_Şubat").setValue(sayi);
 
                 }if(ay==2){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Mart").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Mart").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("c_Mart").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("c_Mart").setValue(sayi);
 
                 }if(ay==3){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Nisan").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Nisan").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("d_Nisan").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("d_Nisan").setValue(sayi);
 
                 }if(ay==4){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Mayıs").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Mayıs").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("e_Mayıs").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("e_Mayıs").setValue(sayi);
 
                 }if(ay==5){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Haziran").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Haziran").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("f_Haziran").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("f_Haziran").setValue(sayi);
 
                 }if(ay==6){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Temmuz").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Temmuz").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("g_Temmuz").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("g_Temmuz").setValue(sayi);
 
                 }if(ay==7){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Ağustos").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Ağustos").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("h_Ağustos").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("h_Ağustos").setValue(sayi);
 
                 }if(ay==8){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Eylül").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Eylül").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("i_Eylül").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("i_Eylül").setValue(sayi);
 
                 }if(ay==9){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Ekim").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Ekim").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("j_Ekim").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("j_Ekim").setValue(sayi);
 
                 }if(ay==10){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Kasım").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Kasım").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("k_Kasım").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("k_Kasım").setValue(sayi);
 
                 }
                 if(ay==11){
-                    sayi=  Integer.parseInt(dataSnapshot.child("Aralık").getValue().toString());  sayi++;
-                    dbRef.child("Aylar").child("Aralık").setValue(sayi);
+                    sayi=  Integer.parseInt(dataSnapshot.child("z_Aralık").getValue().toString());  sayi++;
+                    dbRef.child("Aylar").child("z_Aralık").setValue(sayi);
 
                 }
 

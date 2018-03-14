@@ -173,9 +173,10 @@ public class MusteriSayfasi extends AppCompatActivity {
         beaconManager.setMonitoringListener(new BeaconManager.BeaconMonitoringListener() {
             @Override
             public void onEnteredRegion(BeaconRegion region, List<Beacon> list) {
-                bildirimAt("hoşgeldiniz","merhaba");
+                bildirimAt("Hoşgeldiniz","merhaba");
                 girisSayisiArttır(eposta);
                 ayVerisiArttir();
+                cinsiyetVerisiArttir(eposta);
             }
 
             @Override
@@ -243,7 +244,6 @@ public class MusteriSayfasi extends AppCompatActivity {
         Calendar takvim = Calendar.getInstance(TimeZone.getDefault());
         final int ay = takvim.get(Calendar.MONTH);
 
-
         DatabaseReference dbAylar=db.getReference("Aylar");
 
         dbAylar.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -309,10 +309,68 @@ public class MusteriSayfasi extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+
             }
         });
     }
 
+    int kadinSayisi,erkekSayisi;
+
+    public void cinsiyetVerisiArttir(final String eposta){
+
+        final DatabaseReference dbCinsiyet=db.getReference("Cinsiyet");
+        DatabaseReference dbMusteriler=db.getReference("Müşteri");
+        dbMusteriler.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot musteriler:dataSnapshot.getChildren()){
+                    gelenEposta=musteriler.getValue(Musteri.class).getEposta();
+                    if(gelenEposta.equals(eposta)){
+
+                        String kisininCinsiyeti=musteriler.getValue(Musteri.class).getCinsiyet().toString();
+                        if(kisininCinsiyeti.equals("Kadın")){
+                            dbCinsiyet.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    kadinSayisi=Integer.parseInt(dataSnapshot.child("Kadın").getValue().toString());
+                                    kadinSayisi++;
+                                    dbCinsiyet.child("Kadın").setValue(kadinSayisi);
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                        else{
+                            dbCinsiyet.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    erkekSayisi=Integer.parseInt(dataSnapshot.child("Erkek").getValue().toString());
+                                    erkekSayisi++;
+                                    dbCinsiyet.child("Erkek").setValue(erkekSayisi);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     @Override
     protected void onResume() {
         super.onResume();

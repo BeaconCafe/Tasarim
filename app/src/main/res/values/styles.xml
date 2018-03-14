@@ -9,4 +9,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="kisibutondegistir" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/kisibutondegistir</item>
+    </style>
+
+    <style name="yasbutondegistir" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/yasbutondegistir</item>
+    </style>
+
+    <style name="menubutondegistir" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/menubutondegistir</item>
+    </style>
+
+    <style name="cinsiyetbutondegistir" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/cinsiyetbutondegistir</item>
+    </style>
+
+
 </resources>

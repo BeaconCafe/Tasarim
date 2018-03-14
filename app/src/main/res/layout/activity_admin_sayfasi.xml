@@ -4,37 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bulanikgri"
     tools:context="com.tasarim.tasarim.AdminSayfasi">
 
-
-    <Button
-        android:id="@+id/menüekle"
+    <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="65dp"
-        android:layout_marginTop="77dp"
-        android:onClick="MenüyeSayfaEkle"
-        android:text="Menü" />
+        android:layout_marginLeft="30dp"
 
-    <Button
-        android:id="@+id/analizSayfasinaGit"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/menüekle"
+            style="@style/menubutondegistir"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:paddingTop="108dp"
+            android:textStyle="bold"
+            android:onClick="MenüyeSayfaEkle"
+            android:src="@drawable/kisibutondegistir"
+            android:text="MENÜ"/>
+
+
+        <Button
+            android:id="@+id/analizSayfasinaGit"
+            style="@style/kisibutondegistir"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:paddingTop="108dp"
+            android:layout_toRightOf="@id/menüekle"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:text="KİŞİ ANALİZ" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/menüekle"
-        android:layout_alignBottom="@+id/menüekle"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="33dp"
-        android:text="Analiz sayfası" />
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/layout1"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+
+        >
 
 
-    <Button
-        android:id="@+id/analizCinsiyetSayfasinaGit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/analizSayfasinaGit"
-        android:layout_below="@+id/analizSayfasinaGit"
-        android:layout_marginTop="33dp"
-        android:text="Cinsiyet Analiz" />
+        <Button
+            android:id="@+id/analizCinsiyetSayfasinaGit"
+            style="@style/cinsiyetbutondegistir"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:paddingTop="110dp"
+            android:layout_alignStart="@+id/menüekle"
+            android:layout_below="@+id/menüekle"
+            android:textStyle="bold"
+            android:text="CİNSİYET ANALİZ" />
+        <Button
+            android:id="@+id/yasAnalizSayfasinaGit"
+            style="@style/yasbutondegistir"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:paddingTop="108dp"
+            android:layout_alignStart="@+id/analizSayfasinaGit"
+            android:layout_below="@+id/analizSayfasinaGit"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:text="YAŞ ANALİZ" />
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/arkaplan1"
     android:orientation="vertical"
+    android:textColor="#7E57C2"
     tools:context="com.tasarim.tasarim.MusteriSayfasi">
 
 
@@ -15,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="240dp"
 
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textColor="#7E57C2"
+         />
 
 
     <LinearLayout
@@ -55,6 +58,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/layoutüst"
+
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
@@ -101,6 +106,7 @@
     </RelativeLayout>
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -142,13 +148,42 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       android:layout_gravity="center"
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_alignStart="@+id/pb"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:onClick="MenüGöster"
-        android:text="menü" />
+        android:layout_alignStart="@+id/layoutüst"
+        android:layout_marginTop="50dp"
+
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        >
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:background="@drawable/ripple"
+
+            android:backgroundTint="#BCAAA4"
+            android:onClick="MenüGöster"
+            android:text="menü" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+android:layout_marginTop="20dp"
+            android:background="@drawable/ripple"
+
+            android:backgroundTint="@color/colorAccent"
+            android:text="Kampanyalarım" />
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

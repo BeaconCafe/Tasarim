@@ -19,20 +19,25 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logoicon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Giris"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            android:name=".SplashScreen"
+            android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Giris"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+
         <activity
             android:name=".KayitOl"
             android:windowSoftInputMode="stateVisible|adjustResize" />
@@ -41,7 +46,7 @@
         <activity android:name=".AdminMenu" />
         <activity android:name=".ImagesActivity" />
         <activity android:name=".AnalizSayfasi" />
-        <activity android:name=".AnalizCinsiyet"></activity>
+        <activity android:name=".AnalizCinsiyet" />
     </application>
 
 </manifest>

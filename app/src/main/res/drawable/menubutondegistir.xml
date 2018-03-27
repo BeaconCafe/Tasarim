@@ -3,12 +3,12 @@
 
     <item android:state_enabled="true"
     android:state_pressed="false"
-    android:drawable="@drawable/menua">
+    android:drawable="@drawable/buton2a">
 
     </item>
     <item android:state_enabled="true"
     android:state_pressed="true"
-    android:drawable="@drawable/menub"></item>
+    android:drawable="@drawable/buton2b"></item>
 
 
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/arkaplan1"
     tools:context="com.tasarim.tasarim.AdminSayfasi">
 
     <LinearLayout
@@ -23,7 +24,6 @@
             android:paddingTop="108dp"
             android:textStyle="bold"
             android:onClick="MenüyeSayfaEkle"
-            android:src="@drawable/kisibutondegistir"
             android:text="MENÜ"/>
 
 

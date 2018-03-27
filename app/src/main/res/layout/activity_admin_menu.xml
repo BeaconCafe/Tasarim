@@ -12,6 +12,8 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple2"
+        android:backgroundTint="@color/colorAccent"
         android:text="resim seç" />
 
     <EditText
@@ -19,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:backgroundTint="@color/colorAccent"
         android:layout_toEndOf="@+id/button_choose_image"
         android:hint=" İsim giriniz" />
 
@@ -48,6 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+
+        android:background="@drawable/ripple2"
+        android:backgroundTint="@color/colorAccent"
         android:text="Yükle" />
 
     <TextView

@@ -24,7 +24,7 @@
             android:paddingTop="108dp"
             android:textStyle="bold"
             android:onClick="MenüyeSayfaEkle"
-            android:text="MENÜ"/>
+            android:text="MENÜ DÜZENLE"/>
 
 
         <Button
@@ -36,7 +36,7 @@
             android:layout_toRightOf="@id/menüekle"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
-            android:text="KİŞİ ANALİZ" />
+            android:text="AYLIK ANALİZ" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +59,7 @@
             android:layout_alignStart="@+id/menüekle"
             android:layout_below="@+id/menüekle"
             android:textStyle="bold"
-            android:text="CİNSİYET ANALİZ" />
+            android:text="CİNSİYET ANALİZİ" />
         <Button
             android:id="@+id/yasAnalizSayfasinaGit"
             style="@style/yasbutondegistir"
@@ -70,7 +70,7 @@
             android:layout_below="@+id/analizSayfasinaGit"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
-            android:text="YAŞ ANALİZ" />
+            android:text="YAŞ ANALİZİ" />
 
     </LinearLayout>
 

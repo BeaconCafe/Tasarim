@@ -63,6 +63,8 @@ public class MusteriSayfasi extends AppCompatActivity {
 
         getSupportActionBar().setElevation(0);
 
+        setTitle("BEACON CAFE");
+
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = preferences.edit();
 

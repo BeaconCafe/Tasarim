@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class AnalizYas extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout yenileme_nesnesi;
 
@@ -40,9 +40,9 @@ public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_analiz_sayfasi);
+        setContentView(R.layout.activity_analiz_yas);
 
-        setTitle("AYLIK ANALİZ");
+        setTitle("YAŞ ANALİZİ");
         yenileme_nesnesi = (SwipeRefreshLayout)findViewById(R.id.yenileme_nesnesi);
         yenileme_nesnesi.setOnRefreshListener(this);
 
@@ -57,16 +57,6 @@ public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayo
 
     }
 
-
-    @Override
-    public void onRefresh() {
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
-
-        yenileme_nesnesi.setRefreshing(false);
-    }
-
     public void setupPieChart(){
         barWidth = 0.7f;
         barSpace = 0f;
@@ -79,30 +69,21 @@ public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayo
         chart.setDrawBarShadow(false);
         chart.setDrawGridBackground(false);
 
-        ArrayList<String> aylar=new ArrayList<String>();
+        ArrayList<String> yaslar=new ArrayList<String>();
 
-        aylar.add("Ocak");aylar.add("Şubat"); aylar.add("Mart");aylar.add("Nisan");aylar.add("Mayıs");
-        aylar.add("Haziran");aylar.add("Temmuz");aylar.add("Ağustos");aylar.add("Eylül");aylar.add("Ekim");
-        aylar.add("Kasım");aylar.add("Aralık");
+        yaslar.add("15-25");yaslar.add("26-40"); yaslar.add("41-55");yaslar.add("55+");
 
         final int[] INCOME_COLORS = {
-                Color.rgb(119, 136, 153),
-                Color.rgb(185 ,211, 238),
-                Color.rgb(74 ,128, 77),
                 Color.rgb(111 ,128, 74),
-                Color.rgb(139 ,101, 139),
-                Color.rgb(160 ,82 ,45),
-                Color.rgb(139 ,137, 137),
                 Color.rgb(238, 221, 130	),
-                Color.rgb(0 ,255 ,127),
                 Color.rgb(106 ,90, 205),
-                Color.rgb(106, 150, 31),
                 Color.rgb(152 ,251, 152),
+
         };
 
         final ArrayList barEntries=new ArrayList();
 
-        final DatabaseReference dbAylar=db.getReference().child("Aylar");
+        final DatabaseReference dbAylar=db.getReference().child("Yaş");
 
         dbAylar.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -110,22 +91,22 @@ public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayo
                 int i=0;
                 for(DataSnapshot key:dataSnapshot.getChildren()){
 
-                        barEntries.add(new BarEntry(i,Float.parseFloat(key.getValue().toString())));
+                    barEntries.add(new BarEntry(i,Float.parseFloat(key.getValue().toString())));
 
                     i++;
                 }
                 pb.setVisibility(View.GONE);
 
                 BarDataSet set1;
-        set1 = new BarDataSet(barEntries, "Aylar");
-        set1.setColors(INCOME_COLORS);
+                set1 = new BarDataSet(barEntries, "Yaş");
+                set1.setColors(INCOME_COLORS);
 
-        BarData data = new BarData(set1);
-        data.setValueFormatter(new LargeValueFormatter());
-        chart.setData(data);
-        chart.getBarData().setBarWidth(barWidth);
-        chart.getData().setHighlightEnabled(false);
-        chart.invalidate();
+                BarData data = new BarData(set1);
+                data.setValueFormatter(new LargeValueFormatter());
+                chart.setData(data);
+                chart.getBarData().setBarWidth(barWidth);
+                chart.getData().setHighlightEnabled(false);
+                chart.invalidate();
 
             }
 
@@ -144,7 +125,7 @@ public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayo
         xAxis.setCenterAxisLabels(false);
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(aylar));
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(yaslar));
 
         chart.getAxisRight().setEnabled(false);
         YAxis leftAxis = chart.getAxisLeft();
@@ -153,5 +134,15 @@ public class AnalizSayfasi extends AppCompatActivity implements SwipeRefreshLayo
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f);
 
+    }
+
+    @Override
+    public void onRefresh() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+
+
+        yenileme_nesnesi.setRefreshing(false);
     }
 }

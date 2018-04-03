@@ -21,13 +21,14 @@ public class AdminSayfasi extends AppCompatActivity {
     SharedPreferences.Editor editor;
     FirebaseAuth mAuth;
     Button btn_analiz;
-    Button btn_cinsiyet_analiz;
+    Button btn_cinsiyet_analiz,btn_yas_analiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_sayfasi);
 
+        setTitle("YÖNETİM PANELİ");
         mAuth=FirebaseAuth.getInstance();
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -38,6 +39,7 @@ public class AdminSayfasi extends AppCompatActivity {
 
         btn_analiz=(Button)findViewById(R.id.analizSayfasinaGit);
         btn_cinsiyet_analiz=(Button)findViewById(R.id.analizCinsiyetSayfasinaGit);
+        btn_yas_analiz=(Button)findViewById(R.id.yasAnalizSayfasinaGit);
 
         btn_analiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +56,13 @@ public class AdminSayfasi extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent=new Intent(AdminSayfasi.this,AnalizCinsiyet.class);
+                startActivity(intent);
+            }
+        });
+        btn_yas_analiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminSayfasi.this,AnalizYas.class);
                 startActivity(intent);
             }
         });

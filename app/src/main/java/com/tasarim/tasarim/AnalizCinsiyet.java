@@ -38,6 +38,7 @@ public class AnalizCinsiyet extends AppCompatActivity implements SwipeRefreshLay
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analiz_cinsiyet);
 
+        setTitle("CİNSİYET ANALİZİ");
 
         yenileme_nesnesi = (SwipeRefreshLayout)findViewById(R.id.yenileme_nesnesi); // nesnemizi tanıttık
         yenileme_nesnesi.setOnRefreshListener(this); // nesnenin bu Class içerinde çalışağını belirttik

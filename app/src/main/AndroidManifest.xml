@@ -33,21 +33,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Giris"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
-
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name=".KayitOl"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".MusteriSayfasi"
-            android:theme="@style/AppThemeOnlyColor"/>
+        <activity
+            android:name=".MusteriSayfasi"
+            android:theme="@style/AppThemeOnlyColor" />
         <activity android:name=".AdminSayfasi" />
         <activity android:name=".AdminMenu" />
         <activity android:name=".ImagesActivity" />
         <activity android:name=".AnalizSayfasi" />
         <activity android:name=".AnalizCinsiyet" />
+        <activity android:name=".AnalizYas"></activity>
     </application>
 
 </manifest>

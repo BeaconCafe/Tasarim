@@ -177,6 +177,7 @@ public class MusteriSayfasi extends AppCompatActivity {
                 girisSayisiArttır(eposta);
                 ayVerisiArttir();
                 cinsiyetVerisiArttir(eposta);
+                yasArttir(eposta);
             }
 
             @Override
@@ -370,6 +371,93 @@ public class MusteriSayfasi extends AppCompatActivity {
 
             }
         });
+    }
+
+    int birinciGrup,ikinciGrup,ucuncuGrup,dorduncuGrup;
+    public void yasArttir(final String eposta){
+        final DatabaseReference dbYas=db.getReference("Yaş");
+        DatabaseReference dbMusteriler=db.getReference("Müşteri");
+        dbMusteriler.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot musteriler:dataSnapshot.getChildren()){
+                    gelenEposta=musteriler.getValue(Musteri.class).getEposta();
+                    if(gelenEposta.equals(eposta)){
+                        int kisininYasi=musteriler.getValue(Musteri.class).getYas();
+                        if(kisininYasi>=15&&kisininYasi<=25){
+                            dbYas.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    birinciGrup=Integer.parseInt(dataSnapshot.child("15-25").getValue().toString());
+                                    birinciGrup++;
+                                    dbYas.child("15-25").setValue(birinciGrup);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+                        }
+                        else if(kisininYasi>=26&& kisininYasi<=40){
+                            dbYas.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    ikinciGrup=Integer.parseInt(dataSnapshot.child("26-40").getValue().toString());
+                                    ikinciGrup++;
+                                    dbYas.child("26-40").setValue(ikinciGrup);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                        else if(kisininYasi>=41&& kisininYasi<=55){
+                            dbYas.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    ucuncuGrup=Integer.parseInt(dataSnapshot.child("41-55").getValue().toString());
+                                    ucuncuGrup++;
+                                    dbYas.child("41-55").setValue( ucuncuGrup);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+
+                        else if(kisininYasi>=56){
+                            dbYas.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    dorduncuGrup=Integer.parseInt(dataSnapshot.child("56+").getValue().toString());
+                                    dorduncuGrup++;
+                                    dbYas.child("56+").setValue(dorduncuGrup);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
     @Override
     protected void onResume() {

@@ -1,8 +1,11 @@
 package com.tasarim.tasarim;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -10,9 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +38,8 @@ public class Giris extends AppCompatActivity {
     EditText kullaniciAdi,sifre;
     FirebaseAuth mAuth;
 
+    ProgressBar progressBarlogin;
+
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
@@ -42,7 +49,11 @@ public class Giris extends AppCompatActivity {
         setContentView(R.layout.activity_giris);
 
 
+
+
         getWindow().setBackgroundDrawableResource(R.drawable.arkaplangiris) ;
+
+
 
 
         this.setTitle("Giriş Yap");
@@ -50,6 +61,10 @@ public class Giris extends AppCompatActivity {
         giris=(FloatingActionButton) findViewById(R.id.giris);
         kullaniciAdi=(EditText)findViewById(R.id.kullaniciAdi);
         sifre=(EditText)findViewById(R.id.sifre);
+
+        progressBarlogin=(ProgressBar)findViewById(R.id.progress_bar_login) ;
+
+        progressBarlogin.setVisibility(View.INVISIBLE);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());//preferences objesi
        editor = preferences.edit();
@@ -61,6 +76,7 @@ public class Giris extends AppCompatActivity {
             String rol=preferences.getString("rol","");
             if(rol.equals("müşteri")){
                 Intent i = new Intent(getApplicationContext(),MusteriSayfasi.class);
+
                 startActivity(i);
                 finish();
             }
@@ -86,6 +102,8 @@ public class Giris extends AppCompatActivity {
         giris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBarlogin.setVisibility(View.VISIBLE);
+
                 if(TextUtils.isEmpty(kullaniciAdi.getText().toString())||TextUtils.isEmpty(sifre.getText().toString()))
                 {
                     Toast.makeText(Giris.this, "Boş alan bırakmayınız", Toast.LENGTH_SHORT).show();

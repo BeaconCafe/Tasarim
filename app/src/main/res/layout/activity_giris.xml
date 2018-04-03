@@ -3,6 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -13,9 +14,25 @@
 
     android:gravity="center"
     >
+
+
+
+
+
+
+
+
+
+
+
+
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
+
+
 
         <RelativeLayout
             android:id="@+id/center_layout"
@@ -24,11 +41,18 @@
             android:layout_marginBottom="40dp"
             android:layout_width="fill_parent"
             android:layout_height="500dp">
+
+
+
+
+
             <LinearLayout
                 android:layout_centerInParent="true"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
+
 
 
 
@@ -95,4 +119,13 @@
 
         </RelativeLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_login"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="170dp"
+        android:background="@color/colorPrimary"
+        style="@android:style/Widget.DeviceDefault.ProgressBar.Large"/>
+
 </RelativeLayout>

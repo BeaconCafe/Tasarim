@@ -61,7 +61,7 @@ public class MusteriSayfasi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musteri_sayfasi);
 
-
+        getSupportActionBar().setElevation(0);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = preferences.edit();

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/arkaplan1"
+    android:background="#757575"
     android:orientation="vertical"
     android:textColor="#7E57C2"
     tools:context="com.tasarim.tasarim.MusteriSayfasi">

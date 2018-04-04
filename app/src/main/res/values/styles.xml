@@ -35,8 +35,8 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="elevation">0dp</item>
 
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorPrimary">#757575</item>
+        <item name="colorPrimaryDark">#212121</item>
+        <item name="colorPrimary">#212121</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

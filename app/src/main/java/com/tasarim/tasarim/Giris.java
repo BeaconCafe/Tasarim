@@ -48,12 +48,8 @@ public class Giris extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giris);
 
-
-
-
+        
         getWindow().setBackgroundDrawableResource(R.drawable.arkaplangiris) ;
-
-
 
 
         this.setTitle("Giriş Yap");

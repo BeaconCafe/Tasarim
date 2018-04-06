@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,8 @@ public class MusteriSayfasi extends AppCompatActivity {
     ArcProgress arcProgress;
     int progressStatus=0;
 
+    Button kampanyalar;
+
 
 
     @Override
@@ -80,12 +83,24 @@ public class MusteriSayfasi extends AppCompatActivity {
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
         tv=(TextView)findViewById(R.id.tv);
         tv_ikramSayisi=(TextView)findViewById(R.id.ikramSayisi);
+        kampanyalar=(Button)findViewById(R.id.kampanyalar);
+
+
 
         eposta=preferences.getString("eposta","");
 
         isimGetir();
         beaconBagla();
 
+        kampanyalar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MusteriSayfasi.this,Kampanyalar.class);
+                intent.putExtra("girisSayisi",Integer.toString(db_girisSayisi));
+
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -116,7 +131,6 @@ public class MusteriSayfasi extends AppCompatActivity {
 
                        db_ikramSayisi=isimler.getValue(Musteri.class).getIkramSayisi();
                        tv_ikramSayisi.setText(Integer.toString(db_ikramSayisi));
-
 
 
                        arcProgress.setProgress(db_girisSayisi*10);

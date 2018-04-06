@@ -47,7 +47,8 @@
         <activity android:name=".ImagesActivity" />
         <activity android:name=".AnalizSayfasi" />
         <activity android:name=".AnalizCinsiyet" />
-        <activity android:name=".AnalizYas"></activity>
+        <activity android:name=".AnalizYas" />
+        <activity android:name=".Kampanyalar"></activity>
     </application>
 
 </manifest>

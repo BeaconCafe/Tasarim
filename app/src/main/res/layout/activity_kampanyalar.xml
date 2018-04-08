@@ -9,51 +9,20 @@
     android:orientation="vertical"
     tools:context="com.tasarim.tasarim.Kampanyalar">
 
+    
+
+    <ViewFlipper
+        android:id="@+id/v_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-    <TextView
 
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/tv5"
-        android:layout_width="wrap_content"
-        android:text="Kampanyalar:"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:text="1- Giriş sayınız 20 olduğunda pasta hediye!"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/tv2"
-        android:layout_width="wrap_content"
-        android:text="2- Giriş sayınız 30 olduğunda waffle hediye!"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/tv3"
-        android:layout_width="wrap_content"
-        android:text="3- Giriş sayınız 40 olduğunda sufle hediye!"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+    </ViewFlipper>
 
     <TextView
         android:layout_marginTop="20dp"

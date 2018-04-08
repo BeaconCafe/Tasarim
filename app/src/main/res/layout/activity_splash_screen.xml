@@ -14,7 +14,7 @@
         android:layout_height="200sp"
         android:layout_centerInParent="true"
 
-        android:src="@drawable/logoyaziliseffaf"
+        android:src="@drawable/seffafstart"
         android:id="@+id/imageView" />
 
 

@@ -6,11 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class Kampanyalar extends AppCompatActivity {
 
+
+    ViewFlipper v_flipper;
     TextView tv_girisSayisi;
     Button birinci,ikinci,ucuncu;
 
@@ -20,6 +24,16 @@ public class Kampanyalar extends AppCompatActivity {
         setContentView(R.layout.activity_kampanyalar);
 
         setTitle("Kampanyalarım");
+
+
+        int images[] = {R.drawable.waffle1 , R.drawable.pasta1 , R.drawable.sufle1};
+
+        v_flipper = findViewById(R.id.v_flipper);
+
+        for(int image: images){
+            flipperImages(image);
+        }
+
 
         Bundle extras = getIntent().getExtras();
         String girisSayisi = extras.getString("girisSayisi");
@@ -59,6 +73,20 @@ public class Kampanyalar extends AppCompatActivity {
             ucuncu.setVisibility(View.VISIBLE);
             alertDialogOlustur("ed5ser6 kodunu kasaya iletiniz...");
         }
+
+    }
+
+    public void flipperImages(int image){
+
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(image);
+
+        v_flipper.addView(imageView);
+        v_flipper.setFlipInterval(4000);
+        v_flipper.setAutoStart(true);
+
+        v_flipper.setInAnimation(this, android.R.anim.slide_in_left);
+        v_flipper.setOutAnimation(this, android.R.anim.slide_out_right);
 
     }
 

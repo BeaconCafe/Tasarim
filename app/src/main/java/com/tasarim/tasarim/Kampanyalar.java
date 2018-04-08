@@ -26,7 +26,7 @@ public class Kampanyalar extends AppCompatActivity {
         setTitle("Kampanyalarım");
 
 
-        int images[] = {R.drawable.waffle1 , R.drawable.pasta1 , R.drawable.sufle1};
+        int images[] = {R.drawable.wafflehediye , R.drawable.pastahediye , R.drawable.suflehediye};
 
         v_flipper = findViewById(R.id.v_flipper);
 

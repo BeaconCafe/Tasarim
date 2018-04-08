@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.tasarim.tasarim.Kampanyalar">
 
-    
+
 
     <ViewFlipper
         android:id="@+id/v_flipper"
@@ -56,16 +56,25 @@
             android:id="@+id/birinci"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/ripple"
+            android:backgroundTint="@color/colorAccent"
             android:text="1"/>
         <Button
             android:id="@+id/ikinci"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#BCAAA4"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ripple"
             android:text="2"/>
         <Button
             android:id="@+id/ucuncu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:background="@drawable/ripple"
+            android:backgroundTint="@color/colorAccent"
             android:text="3"/>
     </LinearLayout>
 

@@ -47,13 +47,11 @@
 
 
             <LinearLayout
+                android:id="@+id/ekran"
                 android:layout_centerInParent="true"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
-
-
-
 
 
                 <android.support.design.widget.TextInputLayout
@@ -74,6 +72,8 @@
 
                         android:textStyle="normal|italic" />
                 </android.support.design.widget.TextInputLayout>
+
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -100,9 +100,15 @@
 
                     android:src="@drawable/oka"
 
-
-
                     />
+
+
+
+
+
+
+
+
                 <TextView
                     android:id="@+id/kayitOlSayfasi"
                     android:layout_width="wrap_content"
@@ -115,17 +121,23 @@
 
 
 
+
             </LinearLayout>
 
+
         </RelativeLayout>
+
     </ScrollView>
+
 
     <ProgressBar
         android:id="@+id/progress_bar_login"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="170dp"
-        android:background="@color/colorPrimary"
-        style="@android:style/Widget.DeviceDefault.ProgressBar.Large"/>
+        style="@android:style/Widget.DeviceDefault.ProgressBar.Large"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+
+        />
 
 </RelativeLayout>

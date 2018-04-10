@@ -41,6 +41,8 @@
     </style>
 
 
-
+    <style name="AppTheme.progressbar">
+        <item name="colorAccent">#077e73</item> <!-- Whatever color you want-->
+    </style>
 
 </resources>

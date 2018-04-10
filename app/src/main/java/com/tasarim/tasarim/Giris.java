@@ -98,7 +98,7 @@ public class Giris extends AppCompatActivity {
         giris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBarlogin.setVisibility(View.VISIBLE);
+
 
                 if(TextUtils.isEmpty(kullaniciAdi.getText().toString())||TextUtils.isEmpty(sifre.getText().toString()))
                 {
@@ -108,6 +108,7 @@ public class Giris extends AppCompatActivity {
                 else
                 {
                     login(kullaniciAdi.getText().toString(),sifre.getText().toString());
+
                 }
             }
         });
@@ -128,6 +129,7 @@ public class Giris extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Giris.this, "Giriş Başarılı", Toast.LENGTH_SHORT).show();
+                    progressBarlogin.setVisibility(View.VISIBLE);
 
                    editor.putBoolean("login",true);
                     editor.putString("eposta",email);

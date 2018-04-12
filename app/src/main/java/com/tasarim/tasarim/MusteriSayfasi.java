@@ -499,6 +499,7 @@ public class MusteriSayfasi extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Giris.class);
                 startActivity(i);
                 finish();
+                finish();
             default:
                 return super.onOptionsItemSelected(item);
 

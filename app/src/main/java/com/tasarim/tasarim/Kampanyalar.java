@@ -71,7 +71,13 @@ public class Kampanyalar extends AppCompatActivity {
         }
         if(Integer.parseInt(girisSayisi)>=40){
             ucuncu.setVisibility(View.VISIBLE);
-            alertDialogOlustur("ed5ser6 kodunu kasaya iletiniz...");
+          ucuncu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogOlustur("xd5ser6 kodunu kasaya iletiniz...");
+                }
+            });
+
         }
 
     }

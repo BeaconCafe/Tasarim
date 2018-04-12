@@ -99,8 +99,9 @@ public class KayitOl extends AppCompatActivity {
         btn_giris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(KayitOl.this,Giris.class);
-                startActivity(intent);
+                Intent giris =new Intent(KayitOl.this,Giris.class);
+                startActivity(giris);
+                finish();
             }
         });
 
@@ -176,8 +177,7 @@ public class KayitOl extends AppCompatActivity {
 
 
                     musteriEkle(id,edt_mail.getText().toString(), edt_ad.getText().toString(),edt_soyad.getText().toString(),0,0,secilenCinsiyet,yas);
-                    editor.putBoolean("login",true);
-                    editor.commit();
+
                 }
                 else
                 {

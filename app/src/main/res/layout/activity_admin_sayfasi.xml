@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/arkaplan1"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.tasarim.tasarim.AdminSayfasi">
 
     <LinearLayout
         android:id="@+id/layout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
         android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/menüekle"
@@ -25,30 +24,8 @@
             android:paddingTop="108dp"
             android:textStyle="bold"
             android:onClick="MenüyeSayfaEkle"
+            android:layout_marginRight="10dp"
             android:text="MENÜ DÜZENLE"/>
-
-
-        <Button
-            android:id="@+id/analizSayfasinaGit"
-            style="@style/kisibutondegistir"
-            android:layout_width="150dp"
-            android:layout_height="140dp"
-            android:paddingTop="108dp"
-            android:layout_toRightOf="@id/menüekle"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:text="AYLIK ANALİZ" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_toRightOf="@id/layout1"
-        android:layout_marginLeft="5dp"
-        android:layout_centerVertical="true"
-
-        >
 
 
         <Button
@@ -61,6 +38,28 @@
             android:layout_below="@+id/menüekle"
             android:textStyle="bold"
             android:text="CİNSİYET ANALİZİ" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@id/layout1"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/analizSayfasinaGit"
+            style="@style/kisibutondegistir"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="108dp"
+            android:layout_toRightOf="@id/menüekle"
+            android:textStyle="bold"
+            android:text="AYLIK ANALİZ" />
         <Button
             android:id="@+id/yasAnalizSayfasinaGit"
             style="@style/yasbutondegistir"
@@ -70,11 +69,20 @@
             android:layout_alignStart="@+id/analizSayfasinaGit"
             android:layout_below="@+id/analizSayfasinaGit"
             android:textStyle="bold"
-            android:layout_marginTop="5dp"
             android:text="YAŞ ANALİZİ" />
+
 
     </LinearLayout>
 
 
+  <Button
+      android:id="@+id/kampanyaEkle"
+      android:layout_marginTop="10dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="kampanya ekle"/>
 
-</RelativeLayout>
+
+
+
+</LinearLayout>

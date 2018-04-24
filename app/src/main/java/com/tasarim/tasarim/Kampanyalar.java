@@ -11,11 +11,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Kampanyalar extends AppCompatActivity {
 
 
+    FirebaseDatabase db;
+
     ViewFlipper v_flipper;
-    TextView tv_girisSayisi;
+    TextView tv_girisSayisi,mevcutKampanya;
     Button birinci,ikinci,ucuncu;
 
     @Override
@@ -25,6 +33,7 @@ public class Kampanyalar extends AppCompatActivity {
 
         setTitle("Kampanyalarım");
 
+        db=FirebaseDatabase.getInstance();
 
         int images[] = {R.drawable.wafflehediye , R.drawable.pastahediye , R.drawable.suflehediye};
 
@@ -40,6 +49,7 @@ public class Kampanyalar extends AppCompatActivity {
 
 
         tv_girisSayisi=(TextView)findViewById(R.id.girisSayisi);
+        mevcutKampanya=(TextView)findViewById(R.id.aylıkKampanya);
         birinci=(Button)findViewById(R.id.birinci);
         ikinci=(Button)findViewById(R.id.ikinci);
         ucuncu=(Button)findViewById(R.id.ucuncu);
@@ -49,6 +59,10 @@ public class Kampanyalar extends AppCompatActivity {
         ucuncu.setVisibility(View.INVISIBLE);
 
         tv_girisSayisi.setText("Giriş sayınız: "+girisSayisi);
+
+
+        mevcutKampanyaCek();
+
 
         if(Integer.parseInt(girisSayisi)>=20){
             birinci.setVisibility(View.VISIBLE);
@@ -80,6 +94,23 @@ public class Kampanyalar extends AppCompatActivity {
 
         }
 
+    }
+
+    private void mevcutKampanyaCek(){
+        DatabaseReference dbRef=db.getReference("AylıkKampanya");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               String ayIsmi=  dataSnapshot.child("AyIsmi").getValue().toString();
+                String icerik=dataSnapshot.child("KampanyaIcerik").getValue().toString();
+                mevcutKampanya.setText(ayIsmi+"- "+icerik);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void flipperImages(int image){

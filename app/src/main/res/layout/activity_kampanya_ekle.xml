@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textColor="@android:color/white"
+    android:orientation="vertical"
+    android:layout_margin="40dp"
+    tools:context="com.tasarim.tasarim.KampanyaEkle">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mevcut kampanya: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mevcutKampanya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginBottom="30dp"></Spinner>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/kampanyaIcerik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="start"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="10"
+            android:hint="İçerik"
+            android:scrollbars="vertical"
+            android:selectAllOnFocus="false"
+            android:textStyle="normal|italic" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/ekle"
+        android:layout_width="195dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/ripple"
+        android:backgroundTint="@color/colorAccent"
+        android:fontFamily="serif"
+        android:text="Ekle"
+        android:textStyle="bold" />
+
+</LinearLayout>

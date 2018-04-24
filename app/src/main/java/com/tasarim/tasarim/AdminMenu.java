@@ -1,8 +1,5 @@
 package com.tasarim.tasarim;
 
-
-
-
 import android.content.ContentResolver;
         import android.content.Intent;
         import android.net.Uri;
@@ -19,16 +16,17 @@ import android.content.ContentResolver;
         import android.widget.TextView;
         import android.widget.Toast;
 
-        import com.google.android.gms.tasks.OnFailureListener;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
         import com.google.android.gms.tasks.OnSuccessListener;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.storage.FirebaseStorage;
-        import com.google.firebase.storage.OnProgressListener;
-        import com.google.firebase.storage.StorageReference;
-        import com.google.firebase.storage.StorageTask;
-        import com.google.firebase.storage.UploadTask;
-        import com.squareup.picasso.Picasso;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+   import com.google.firebase.storage.StorageTask;
+  import com.google.firebase.storage.UploadTask;
+
 
 public class AdminMenu extends AppCompatActivity {
 
@@ -105,7 +103,7 @@ public class AdminMenu extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            Picasso.with(this).load(mImageUri).into(mImageView);
+            Glide.with(this).load(mImageUri).into(mImageView);
         }
     }
 

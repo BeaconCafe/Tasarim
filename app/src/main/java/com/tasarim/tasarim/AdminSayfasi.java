@@ -21,7 +21,7 @@ public class AdminSayfasi extends AppCompatActivity {
     SharedPreferences.Editor editor;
     FirebaseAuth mAuth;
     Button btn_analiz;
-    Button btn_cinsiyet_analiz,btn_yas_analiz;
+    Button btn_cinsiyet_analiz,btn_yas_analiz,btn_kampanya_ekle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class AdminSayfasi extends AppCompatActivity {
         btn_analiz=(Button)findViewById(R.id.analizSayfasinaGit);
         btn_cinsiyet_analiz=(Button)findViewById(R.id.analizCinsiyetSayfasinaGit);
         btn_yas_analiz=(Button)findViewById(R.id.yasAnalizSayfasinaGit);
+        btn_kampanya_ekle=(Button)findViewById(R.id.kampanyaEkle);
 
         btn_analiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +64,14 @@ public class AdminSayfasi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(AdminSayfasi.this,AnalizYas.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_kampanya_ekle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminSayfasi.this,KampanyaEkle.class);
                 startActivity(intent);
             }
         });

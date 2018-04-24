@@ -44,12 +44,16 @@
             android:theme="@style/AppThemeOnlyColor" />
         <activity android:name=".AdminSayfasi" />
         <activity android:name=".AdminMenu" />
-        <activity android:name=".ImagesActivity" />
+        <activity
+            android:name=".ImagesActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".AnalizSayfasi" />
         <activity android:name=".AnalizCinsiyet" />
         <activity android:name=".AnalizYas" />
-        <activity android:name=".Kampanyalar"
-            android:theme="@style/AppThemeOnlyColor"></activity>
+        <activity
+            android:name=".Kampanyalar"
+            android:theme="@style/AppThemeOnlyColor" />
+        <activity android:name=".KampanyaEkle"></activity>
     </application>
 
 </manifest>

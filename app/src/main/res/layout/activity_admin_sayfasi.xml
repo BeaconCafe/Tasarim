@@ -75,14 +75,18 @@
     </LinearLayout>
 
 
-  <Button
-      android:id="@+id/kampanyaEkle"
-      android:layout_marginTop="10dp"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="kampanya ekle"/>
 
-
+    <Button
+        android:id="@+id/kampanyaEkle"
+        style="@style/kmpbutondegistir"
+        android:layout_width="300dp"
+        android:layout_height="140dp"
+        android:layout_alignStart="@+id/layout1"
+        android:layout_below="@+id/layout1"
+        android:paddingTop="112dp"
+        android:layout_marginTop="10dp"
+        android:text="KAMPANYA EKLE"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

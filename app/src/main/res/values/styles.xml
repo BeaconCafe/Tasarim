@@ -26,6 +26,10 @@
         <item name="android:background">@drawable/cinsiyetbutondegistir</item>
     </style>
 
+    <style name="kmpbutondegistir" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/kmpbutondegistir</item>
+    </style>
+
 
     <style name="splash" parent="Theme.AppCompat.DayNight.NoActionBar"/>
 
